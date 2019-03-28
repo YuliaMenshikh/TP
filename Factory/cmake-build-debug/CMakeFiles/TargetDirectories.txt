@@ -1,0 +1,3 @@
+/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/CMakeFiles/rebuild_cache.dir
+/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/CMakeFiles/edit_cache.dir
+/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/CMakeFiles/Factory.dir

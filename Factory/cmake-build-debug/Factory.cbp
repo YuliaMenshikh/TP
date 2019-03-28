@@ -1,0 +1,212 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6"/>
+	<Project>
+		<Option title="Factory"/>
+		<Option makefile_is_custom="1"/>
+		<Option compiler="gcc"/>
+		<Option virtualFolders="CMake Files\;"/>
+		<Build>
+			<Target title="all">
+				<Option working_dir="/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 all"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="rebuild_cache">
+				<Option working_dir="/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 rebuild_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="edit_cache">
+				<Option working_dir="/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug"/>
+				<Option type="4"/>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 edit_cache"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Factory">
+				<Option output="/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Factory" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/yulia/Desktop/DIHT/2term/TP/Factory/."/>
+					<Add directory="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon"/>
+					<Add directory="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 Factory"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+			<Target title="Factory/fast">
+				<Option output="/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Factory" prefix_auto="0" extension_auto="0"/>
+				<Option working_dir="/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug"/>
+				<Option object_output="./"/>
+				<Option type="1"/>
+				<Option compiler="gcc"/>
+				<Compiler>
+					<Add directory="/Users/yulia/Desktop/DIHT/2term/TP/Factory/."/>
+					<Add directory="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon"/>
+					<Add directory="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include/c++/v1"/>
+					<Add directory="/usr/local/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/10.0.0/include"/>
+					<Add directory="/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/include"/>
+					<Add directory="/usr/include"/>
+					<Add directory="/System/Library/Frameworks"/>
+					<Add directory="/Library/Frameworks"/>
+				</Compiler>
+				<MakeCommands>
+					<Build command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 Factory/fast"/>
+					<CompileFile command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 &quot;$file&quot;"/>
+					<Clean command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+					<DistClean command="/usr/bin/make -j4 -f &quot;/Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/Makefile&quot;  VERBOSE=1 clean"/>
+				</MakeCommands>
+			</Target>
+		</Build>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/BloodMaiden.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/BloodMaiden.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/DarkRaiden.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/DarkRaiden.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/DungeonFactory.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/DungeonFactory.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/Hydra.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/Hydra.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/Minotaur.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/Minotaur.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/Scout.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/Scout.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/ShadowDragon.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/ShadowDragon.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/ShadowWitch.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/ShadowWitch.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon/YlayaSingleton.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/Angel.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/Angel.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/Archer.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/Archer.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/Cavalier.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/Cavalier.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/DuncanSingleton.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/Footman.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/Footman.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/Griffin.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/Griffin.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/HeavenFactory.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/HeavenFactory.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/Peasant.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/Peasant.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/Priest.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven/Priest.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/Unit.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/UnitBase.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/UnitBase.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/UnitFactory.h">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/main.cpp">
+			<Option target="Factory"/>
+		</Unit>
+		<Unit filename="/Users/yulia/Desktop/DIHT/2term/TP/Factory/CMakeLists.txt">
+			<Option virtualFolder="CMake Files\"/>
+		</Unit>
+	</Project>
+</CodeBlocks_project_file>
