@@ -1,0 +1,13 @@
+#!/bin/bash
+
+Brew install boost
+Brew install openssl
+Brew install doxygen
+Brew install gnutls
+
+cd ./Decorator/cpp-source
+
+cmake .
+make
+cd out
+./Decorator

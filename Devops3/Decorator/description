@@ -1,0 +1,9 @@
+1. Потребовалась установка дополнительных пакетов: boost, openssl, doxygen, gnutls (Делала по MacOS, пакеты устанавливала через brew install)
+2. Для openssl потребовалось прописать в систему переменную окружения OPENSSL_ROOT_DIR
+3. Некоторые проекты используют C++14. Пришлось указать это в CMakeLists.txt
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++14")
+4. Добавила в CMakeLists.txt:
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${Decorator_SOURCE_DIR}/out)
+Пришлось определить переменную. (Директория, куда собирается бинарник и копируется 	config.ini)
+5. libc++abi.dylib: terminating with uncaught exception of type vmime::exceptions::connection_error: Error while connecting socket.
+Проблему решил VPN

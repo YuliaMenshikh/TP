@@ -1,0 +1,18 @@
+#!/bin/bash
+
+TMP=$1 #temp dir name
+
+git clone https://github.com/akhtyamovpavel/PatternsCollection.git
+git clone https://github.com/raspberrypi/tools.git
+
+mkdir ${TMP}
+
+export PATH="$PATH:../tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/bin/"
+
+cd ${TMP}
+
+cmake -DON_PI=ON -DSYSROOT="../tools/arm-bcm2708/arm-rpi-4.9.3-linux-gnueabihf/arm-linux-gnueabihf/sysroot/" ../PatternsCollection
+make
+
+cd ../
+rm -rf ${TMP}
