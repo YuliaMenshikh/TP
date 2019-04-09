@@ -1,9 +1,9 @@
 #!/bin/bash
 
-Brew install boost
-Brew install openssl
-Brew install doxygen
-Brew install gnutls
+brew install boost
+brew install openssl
+brew install doxygen
+brew install gnutls
 
 cd ./Decorator/cpp-source
 
