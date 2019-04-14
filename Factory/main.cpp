@@ -1,11 +1,16 @@
 #include <iostream>
 #include <vector>
+#include <memory>
 
 #include "UnitFactory.h"
 #include "Dungeon/DungeonFactory.h"
 #include "Heaven/HeavenFactory.h"
+#include "YlayaSingleton.h"
+#include "DuncanSingleton.h"
+#include "gtest/gtest.h"
+#include "Exceptions.h"
 
-int main()
+void ClientCode()
 {
     const int DungeonfactoryId = 1;
     const int HeavenFactoryId = 2;
@@ -16,24 +21,22 @@ int main()
 
     int factoryId = 0;
     std::cin >> factoryId;
-    UnitFactory* factory = nullptr;
+    UnitFactory::Ptr factory;
     switch (factoryId)
     {
-    case DungeonfactoryId:
-        factory = new DungeonFactory;
-        break;
-    case HeavenFactoryId:
-        factory = new HeavenFactory;
-        break;
-    default:
-        std::cout << "Invalid team selected" << std::endl;
-        return -1;
+        case DungeonfactoryId:
+            factory = std::make_shared<DungeonFactory>();
+            break;
+        case HeavenFactoryId:
+            factory = std::make_shared<HeavenFactory>();
+            break;
+        default:
+            throw InvalidFactoryIdException();
     }
 
     UnitFactory::UnitItems availableUnits;
     factory->GetAvailableUnits(availableUnits);
 
-    std::vector<Unit*> units;
     int unitId = 0;
     while (true)
     {
@@ -49,25 +52,46 @@ int main()
         if (unitId == 0)
             break;
 
-        Unit* unit = factory->CreateUnit(unitId);
-        if (unit)
+        try
         {
-            units.push_back(unit);
+            factory->GetHero().AddUnit(factory->CreateUnit(unitId));
         }
-        else
+        catch (const InvalidUnitIdException&)
         {
-            std::cout << "Invalid select" << std::endl;
+            std::cout << "Invalid Select" << std::endl;
         }
-    };
+    }
 
     std::cout << std::endl;
+    std::cout << "Hero: " << factory->GetHero().GetName() << std::endl;
     std::cout << factory->GetName() << " units:" << std::endl;
+    std::vector<Unit::Ptr> units;
+    factory->GetHero().GetUnits(units);
     for (size_t i = 0; i < units.size(); ++i)
     {
         std::cout << units[i]->GetName() << std::endl;
-        delete units[i];
     }
-    delete factory;
-    //system("pause"); // Remove this
+}
+
+void Test()
+{
+    RUN_ALL_TESTS();
+    Ylaya::getInstance().RemoveAllUnits();
+    Duncan::getInstance().RemoveAllUnits();
+}
+
+int main(int argc, char** argv)
+{
+    try
+    {
+        Test();
+        ClientCode();
+    }
+    catch (const std::exception &exc)
+    {
+        std::cout << exc.what() << std::endl;
+        return -1;
+    }
+
     return 0;
 }

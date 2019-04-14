@@ -9,11 +9,11 @@ public:
     virtual std::string GetName() const override;
 
     static std::string name() { return "Shadow Dragon"; }
-    static int MaxPower() { return 27; }
-    static int MaxProtection() { return 27; }
-    static int MaxUnitsOfLife() { return 180; }
-    static int MaxInitiative() { return 11; }
-    static int MaxSpeed() { return 6; }
+    static int MaxPower() { return 25; }
+    static int MaxProtection() { return 24; }
+    static int MaxUnitsOfLife() { return 200; }
+    static int MaxInitiative() { return 10; }
+    static int MaxSpeed() { return 9; }
     static int MaxStockShots() { return 0; }
     static int MaxMagicPoints() { return 0; }
 };

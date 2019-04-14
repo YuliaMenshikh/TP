@@ -44,4 +44,16 @@ add_executable(Factory
         Dungeon/Minotaur.cpp
         Dungeon/Scout.cpp
         Dungeon/ShadowDragon.cpp
-        Dungeon/ShadowWitch.cpp Heaven/DuncanSingleton.h Dungeon/YlayaSingleton.h)
+        Dungeon/ShadowWitch.cpp
+        Heaven/DuncanSingleton.h
+        Dungeon/YlayaSingleton.h
+        Hero.h
+        HeroBase.h
+        Test/test1.cpp Exceptions.h)
+
+add_subdirectory(googletest-master) 
+
+include_directories(googletest-master/googletest/include) 
+include_directories(googletest-master/googlemock/include) 
+
+target_link_libraries(Factory gtest gtest_main) 

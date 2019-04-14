@@ -1,10 +1,13 @@
 #pragma once
 
 #include <string>
+#include <memory>
 
 struct Unit
 {
-public:
+    typedef std::shared_ptr<Unit> Ptr;
+
+    virtual ~Unit() {}
     virtual std::string GetName() const = 0;
     virtual int GetPower() const = 0;
     virtual int GetProtection() const = 0;

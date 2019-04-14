@@ -6,8 +6,9 @@ class HeavenFactory : public UnitFactory
 {
 public:
     virtual void GetAvailableUnits(UnitItems& units) const override;
-    virtual Unit* CreateUnit(int unitId) const override;
-    virtual std::string GetName() const { return name(); }
+    virtual Hero& GetHero() const override;
+    virtual Unit::Ptr CreateUnit(int unitId) const override;
+    virtual std::string GetName() const override { return name(); }
 
     static std::string name() { return "Heaven"; }
 

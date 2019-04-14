@@ -1,21 +1,24 @@
 #pragma once
 
-class Duncan
+#include "HeroBase.h"
+#include "Unit.h"
+
+class Duncan : public HeroBase
 {
 public:
-    static Duncan& getInstance() {
-        static Duncan  instance;
+    static Duncan& getInstance()
+    {
+        static Duncan instance;
         return instance;
     }
+
+    virtual std::string GetName() const override
+    {
+        return "Duncan";
+    }
+
 private:
     Duncan() {}
     Duncan(const Duncan& );
     Duncan& operator = (Duncan&);
-
-    int _level;
-    int _power;
-    int _protection;
-    int _magicPoints;
-    int  _knowledge;
-
 };

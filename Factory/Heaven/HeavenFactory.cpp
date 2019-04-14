@@ -1,4 +1,5 @@
 #include "HeavenFactory.h"
+#include "DuncanSingleton.h"
 #include "Angel.h"
 #include "Archer.h"
 #include "Cavalier.h"
@@ -6,6 +7,9 @@
 #include "Griffin.h"
 #include "Peasant.h"
 #include "Priest.h"
+#include "Exceptions.h"
+
+#include <memory>
 
 void HeavenFactory::GetAvailableUnits(UnitItems& units) const
 {
@@ -19,25 +23,29 @@ void HeavenFactory::GetAvailableUnits(UnitItems& units) const
     units.push_back(UnitItem(HeavenPriest, Priest::name()));
 }
 
-Unit* HeavenFactory::CreateUnit(int unitId) const
+Hero& HeavenFactory::GetHero() const
+{
+    return Duncan::getInstance();
+}
+
+Unit::Ptr HeavenFactory::CreateUnit(int unitId) const
 {
     switch (unitId)
     {
         case HeavenAngel:
-            return new Angel;
+            return std::make_shared<Angel>();
         case HeavenArcher:
-            return new Archer;
+            return std::make_shared<Archer>();
         case HeavenCavalier:
-            return new Cavalier;
+            return std::make_shared<Cavalier>();
         case HeavenFootman:
-            return new Footman;
+            return std::make_shared<Footman>();
         case HeavenGriffin:
-            return new Griffin;
+            return std::make_shared<Griffin>();
         case HeavenPeasant:
-            return  new Peasant;
+            return std::make_shared<Peasant>();
         case HeavenPriest:
-            return new Priest;
+            return std::make_shared<Priest>();
     }
-
-    return nullptr;
+    throw InvalidUnitIdException();
 }

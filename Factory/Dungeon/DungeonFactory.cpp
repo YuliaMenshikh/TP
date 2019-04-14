@@ -1,4 +1,5 @@
 #include "DungeonFactory.h"
+#include "YlayaSingleton.h"
 #include "BloodMaiden.h"
 #include "DarkRaiden.h"
 #include "Hydra.h"
@@ -6,6 +7,9 @@
 #include "Scout.h"
 #include "ShadowWitch.h"
 #include "ShadowDragon.h"
+#include "Exceptions.h"
+
+#include <memory>
 
 void DungeonFactory::GetAvailableUnits(UnitItems& units) const
 {
@@ -19,25 +23,29 @@ void DungeonFactory::GetAvailableUnits(UnitItems& units) const
     units.push_back(UnitItem(DungeonShadowDragon, ShadowDragon::name()));
 }
 
-Unit* DungeonFactory::CreateUnit(int unitId) const
+Hero& DungeonFactory::GetHero() const
+{
+    return Ylaya::getInstance();
+}
+
+Unit::Ptr DungeonFactory::CreateUnit(int unitId) const
 {
     switch (unitId)
     {
         case DungeonScout:
-            return new Scout;
+            return std::make_shared<Scout>();
         case DungeonBloodMaiden:
-            return new BloodMaiden;
+            return std::make_shared<BloodMaiden>();
         case DungeonMinotaur:
-            return new Minotaur;
+            return std::make_shared<Minotaur>();
         case DungeonDarkRaiden:
-            return new DarkRaiden;
+            return std::make_shared<DarkRaiden>();
         case DungeonHydra:
-            return new Hydra;
+            return std::make_shared<Hydra>();
         case DungeonShadowWitch:
-            return new ShadowWitch;
+            return std::make_shared<ShadowWitch>();
         case DungeonShadowDragon:
-            return new ShadowDragon;
+            return std::make_shared<ShadowDragon>();
     }
-
-    return nullptr;
+    throw InvalidUnitIdException();
 }
