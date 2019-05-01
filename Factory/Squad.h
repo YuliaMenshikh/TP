@@ -1,7 +1,6 @@
 #pragma once
 
 #include "Unit.h"
-#include "UnitInfo.h"
 #include <vector>
 #include <string>
 
@@ -9,7 +8,9 @@ class Squad : public Unit
 {
 public:
     Squad(const std::string &name);
-    void AddUnit(Unit::Ptr unit, const Position &position);
+    void AddUnit(Unit::Ptr unit);
+
+    virtual bool IsComposite() const override;
 
     virtual std::string GetName() const override;
     virtual int GetPower() const override;
@@ -20,7 +21,15 @@ public:
     virtual int GetStockShots() const override;
     virtual int GetMagicPoints() const override;
 
+    virtual Unit::CollectionPtr GetUnits() const override;
+
+    virtual void DecreaseUnitsOfLife(int value) override;
+
+    virtual bool IsAlive() const override;
+
+    virtual void RemoveDied() override;
+
 private:
     std::string _name;
-    UnitInfo::Collection _units;
+    Unit::CollectionPtr _units;
 };

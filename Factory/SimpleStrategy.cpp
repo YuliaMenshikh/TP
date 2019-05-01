@@ -1,5 +1,6 @@
 #include "SimpleStrategy.h"
 #include "BattleField.h"
+#include "Exceptions.h"
 
 #include<algorithm>
 
@@ -10,7 +11,7 @@ void SimpleStrategy::MakeStep(Hero::Ptr heroFrom, Hero::Ptr heroTo)
 
     if(GetUnitToAttack(heroFrom, heroTo, unitFrom, unitTo))
     {
-        unitTo->DecreaseUnitsOfLfe(unitFrom->GetPower());
+        unitTo->DecreaseUnitsOfLife(unitFrom->GetPower());
         std::cout << unitFrom->GetName() << " атаковал " << unitTo->GetName() << std::endl;
         heroTo->RemoveDied();
         return;
@@ -59,6 +60,44 @@ void SimpleStrategy::MakeStep(Hero::Ptr heroFrom, Hero::Ptr heroTo)
     }
 }
 
+Unit::Ptr GetUnitWithMaxPower(Unit::CollectionPtr units)
+{
+    Unit::Ptr unit;
+    int maxPower = 0;
+    for (auto _unit : *units)
+    {
+        if (_unit->GetPower() > maxPower)
+        {
+            maxPower = _unit->GetPower();
+            unit = _unit;
+        }
+    }
+
+    if (!unit)
+        throw GameException("Empty Unit::Collection");
+
+    return unit;
+}
+
+Unit::Ptr GetUnitWithMinHealth(Unit::CollectionPtr units)
+{
+    Unit::Ptr unit;
+    int minHealth = INT_MAX;
+    for (auto _unit : *units)
+    {
+        if (_unit->GetUnitsOfLife() < minHealth)
+        {
+            minHealth = _unit->GetUnitsOfLife();
+            unit = _unit;
+        }
+    }
+
+    if (!unit)
+        throw GameException("Empty Unit::Collection");
+
+    return unit;
+}
+
 bool SimpleStrategy::GetUnitToAttack(Hero::Ptr heroFrom, Hero::Ptr heroTo, Unit::Ptr &unitFrom, Unit::Ptr &unitTo) const
 {
     UnitInfo::CollectionPtr unitsInfoFrom = heroFrom->GetUnits();
@@ -72,8 +111,23 @@ bool SimpleStrategy::GetUnitToAttack(Hero::Ptr heroFrom, Hero::Ptr heroTo, Unit:
         });
         if (it != unitsInfoTo->end())
         {
-            unitFrom = _unitInfoFrom->GetUnit();
-            unitTo = (*it)->GetUnit();
+            if (_unitInfoFrom->GetUnit()->IsComposite())
+            {
+                unitFrom = GetUnitWithMaxPower(_unitInfoFrom->GetUnit()->GetUnits());
+            }
+            else
+            {
+                unitFrom = _unitInfoFrom->GetUnit();
+            }
+
+            if ((*it)->GetUnit()->IsComposite())
+            {
+                unitTo = GetUnitWithMinHealth((*it)->GetUnit()->GetUnits());
+            }
+            else
+            {
+                unitTo = (*it)->GetUnit();
+            }
             return true;
         }
     }

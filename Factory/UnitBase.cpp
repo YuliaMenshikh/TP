@@ -1,4 +1,5 @@
 #include "UnitBase.h"
+#include "Exceptions.h"
 
 UnitBase::UnitBase(int MaxPower, int MaxProtection, int MaxUnitsOfLife, int MaxInitiative, int MaxSpeed,
                    int MaxStockShots, int MaxMagicPoints) : _power(MaxPower),
@@ -9,6 +10,11 @@ UnitBase::UnitBase(int MaxPower, int MaxProtection, int MaxUnitsOfLife, int MaxI
                                                             _stockShots(MaxStockShots),
                                                             _magicPoints(MaxMagicPoints)
 {
+}
+
+bool UnitBase::IsComposite() const
+{
+    return false;
 }
 
 int UnitBase::GetPower() const
@@ -46,7 +52,12 @@ int UnitBase::GetMagicPoints() const
     return _magicPoints;
 }
 
-void UnitBase::DecreaseUnitsOfLfe(int amount)
+Unit::CollectionPtr UnitBase::GetUnits() const
+{
+    throw GameException("UnitBase::GetUnits() called");
+}
+
+void UnitBase::DecreaseUnitsOfLife(int amount)
 {
     _unitsOfLife -= amount;
     if (_unitsOfLife < 0)
@@ -56,4 +67,9 @@ void UnitBase::DecreaseUnitsOfLfe(int amount)
 bool UnitBase::IsAlive() const
 {
     return _unitsOfLife > 0;
+}
+
+void UnitBase::RemoveDied()
+{
+    throw GameException("UnitBase::RemoveDied() called");
 }

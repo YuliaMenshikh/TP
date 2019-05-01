@@ -12,15 +12,43 @@
 #include "Squad.h"
 #include "SimpleStrategy.h"
 
-/*Unit::Ptr TestSquad()
+void TestSquad()
 {
-    UnitFactory::Ptr factory = std::make_shared<DungeonFactory>();
+    UnitFactory::Ptr factory1 = std::make_shared<DungeonFactory>();
     std::shared_ptr<Squad> squad(new Squad("1 squad"));
-    squad->AddUnit(factory->CreateUnit(1), Position(1,2));
-    squad->AddUnit(factory->CreateUnit(3), Position(2,3));
+    squad->AddUnit(factory1->CreateUnit(DungeonFactory::DungeonScout));
+    squad->AddUnit(factory1->CreateUnit(DungeonFactory::DungeonDarkRaiden));
+    Hero::Ptr hero1 = factory1->CreateHero();
+    hero1->AddUnit(squad, Position(1, 1));
+    hero1->AddUnit(factory1->CreateUnit(DungeonFactory::DungeonMinotaur), Position(3, 7));
 
-    return squad;
-}*/
+    UnitFactory::Ptr factory2 = std::make_shared<HeavenFactory>();
+    Hero::Ptr hero2 = factory2->CreateHero();
+    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenPeasant), Position(5, 6));
+    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenFootman), Position(2, 2));
+    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenPriest), Position(5, 1));
+    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenCavalier), Position(1, 2));
+
+    std::shared_ptr<Strategy> strategy(new SimpleStrategy);
+
+    for (int i = 0; i < 20; ++i)
+    {
+        strategy->MakeStep(hero1, hero2);
+        if (!hero2->HasUnits())
+        {
+            std::cout << "Армия героя " << hero2->GetName() << " уничтожена" << std::endl;
+            break;
+        }
+
+        strategy->MakeStep(hero2, hero1);
+        if (!hero1->HasUnits())
+        {
+            std::cout << "Армия героя " << hero1->GetName() << " уничтожена" << std::endl;
+            break;
+        }
+
+    }
+}
 
 void TestBattleField()
 {
@@ -139,9 +167,9 @@ int main(int argc, char** argv)
     {
         Test();
         TestBattleField();
-        TestGetClosestUnits();
+        //TestGetClosestUnits();
         //ClientCode();
-        //TestSquad();
+        TestSquad();
     }
     catch (const std::exception &exc)
     {

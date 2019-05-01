@@ -8,6 +8,9 @@ class UnitBase: public Unit
 public:
     UnitBase(int MaxPower, int MaxProtection, int MaxUnitsOfLife,
             int MaxInitiative, int MaxSpeed, int MaxStockShots, int MaxMagicPoints);
+
+    virtual bool IsComposite() const override;
+
     virtual int GetPower() const override;
     virtual int GetProtection() const override;
     virtual int GetUnitsOfLife() const override;
@@ -16,9 +19,13 @@ public:
     virtual int GetStockShots() const override;
     virtual int GetMagicPoints() const override;
 
-    virtual void DecreaseUnitsOfLfe(int amount) override;
+    virtual Unit::CollectionPtr GetUnits() const override;
+
+    virtual void DecreaseUnitsOfLife(int amount) override;
 
     virtual bool IsAlive() const override;
+
+    virtual void RemoveDied() override;
 
 private:
     int _power;

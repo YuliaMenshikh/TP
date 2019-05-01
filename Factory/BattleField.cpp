@@ -10,7 +10,7 @@ bool BattleField::IsFreePosition(const Position &position) const
 void BattleField::TakePosition(const Position &position)
 {
     if (!IsFreePosition(position))
-        throw PositionIsTaken();
+        throw PositionIsTakenException();
 
     _takenPositions.insert(position);
 }

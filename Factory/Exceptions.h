@@ -1,38 +1,39 @@
 #include <exception>
+#include <string>
 
-class InvalidFactoryIdException : public std::exception
+class GameException : public std::exception
 {
 public:
+    GameException(const std::string &what) : _what(what) {}
     virtual const char* what() const noexcept
     {
-        return "Invalid factory id";
+        return _what.c_str();
     }
+
+private:
+    const std::string _what;
 };
 
-class InvalidUnitIdException : public std::exception
+class InvalidFactoryIdException : public GameException
 {
 public:
-    virtual const char* what() const noexcept
-    {
-        return "Invalid unit id";
-    }
+    InvalidFactoryIdException() : GameException("Invalid factory id") {}
 };
 
-class PositionIsTaken : public std::exception
+class InvalidUnitIdException : public GameException
 {
 public:
-    virtual const char* what() const noexcept
-    {
-        return "Position is taken";
-    }
+    InvalidUnitIdException() : GameException("Invalid unit id") {}
 };
 
-class InvalidDirection : public std::exception
+class PositionIsTakenException : public GameException
 {
 public:
-    virtual const char* what() const noexcept
-    {
-        return "Invalid direction";
-    }
+    PositionIsTakenException() : GameException("Position is taken") {}
 };
 
+class InvalidDirectionException : public GameException
+{
+public:
+    InvalidDirectionException() : GameException("Invalid direction") {}
+};

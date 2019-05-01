@@ -1,7 +1,13 @@
 #include "Squad.h"
+#include "Exceptions.h"
 
-Squad::Squad(const std::string &name) : _name(name)
+Squad::Squad(const std::string &name) : _name(name), _units(new Unit::Collection)
 {
+}
+
+bool Squad::IsComposite() const
+{
+    return true;
 }
 
 std::string Squad::GetName() const
@@ -9,17 +15,17 @@ std::string Squad::GetName() const
     return _name;
 }
 
-void Squad::AddUnit(Unit::Ptr unit, const Position &position)
+void Squad::AddUnit(Unit::Ptr unit)
 {
-    _units.push_back(std::shared_ptr<UnitInfo>(new UnitInfo(unit, position)));
+    _units->push_back(unit);
 }
 
 int Squad::GetPower() const
 {
     int power = 0;
-    for (auto unit : _units)
+    for (auto unit : *_units)
     {
-        power += unit->GetUnit()->GetPower();
+        power += unit->GetPower();
     }
     return power;
 }
@@ -27,9 +33,9 @@ int Squad::GetPower() const
 int Squad::GetProtection() const
 {
     int protection = 0;
-    for (auto unit : _units)
+    for (auto unit : *_units)
     {
-        protection += unit->GetUnit()->GetPower();
+        protection += unit->GetPower();
     }
     return protection;
 }
@@ -37,9 +43,9 @@ int Squad::GetProtection() const
 int Squad::GetUnitsOfLife() const
 {
     int unitsOfLife = 0;
-    for (auto unit : _units)
+    for (auto unit : *_units)
     {
-        unitsOfLife += unit->GetUnit()->GetPower();
+        unitsOfLife += unit->GetPower();
     }
     return unitsOfLife;
 }
@@ -47,9 +53,9 @@ int Squad::GetUnitsOfLife() const
 int Squad::GetInitiative() const
 {
     int initiative = 0;
-    for (auto unit : _units)
+    for (auto unit : *_units)
     {
-        initiative += unit->GetUnit()->GetPower();
+        initiative += unit->GetPower();
     }
     return initiative;
 }
@@ -57,9 +63,9 @@ int Squad::GetInitiative() const
 int Squad::GetSpeed() const
 {
     int speed = 0;
-    for (auto unit : _units)
+    for (auto unit : *_units)
     {
-        speed += unit->GetUnit()->GetPower();
+        speed += unit->GetPower();
     }
     return speed;
 }
@@ -67,9 +73,9 @@ int Squad::GetSpeed() const
 int Squad::GetStockShots() const
 {
     int stockShots = 0;
-    for (auto unit : _units)
+    for (auto unit : *_units)
     {
-        stockShots += unit->GetUnit()->GetPower();
+        stockShots += unit->GetPower();
     }
     return stockShots;
 }
@@ -77,9 +83,41 @@ int Squad::GetStockShots() const
 int Squad::GetMagicPoints() const
 {
     int magicPoints = 0;
-    for (auto unit : _units)
+    for (auto unit : *_units)
     {
-        magicPoints += unit->GetUnit()->GetPower();
+        magicPoints += unit->GetPower();
     }
     return magicPoints;
+}
+
+Unit::CollectionPtr Squad::GetUnits() const
+{
+    return _units;
+}
+
+void Squad::DecreaseUnitsOfLife(int value)
+{
+    throw GameException("Squad::DecreaseUnitsOfLfe called ");
+}
+
+bool Squad::IsAlive() const
+{
+    return !_units->empty();
+}
+
+void Squad::RemoveDied()
+{
+    auto it = std::remove_if(_units->begin(), _units->end(), [&](const Unit::Ptr &_unit)
+    {
+        if (!_unit->IsAlive())
+        {
+            std::cout << _unit->GetName() << " из отряда " << GetName() << " убит" << std::endl;
+            return true;
+        }
+        return false;
+    });
+    if (it != _units->end())
+    {
+        _units->erase(it, _units->end());
+    }
 }

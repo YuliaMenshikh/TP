@@ -40,7 +40,7 @@ void UnitInfo::Move(Direction direction)
             _position =  _position.Down();
             break;
         default:
-            throw InvalidDirection();
+            throw InvalidDirectionException();
     }
     BattleField::getInstance().TakePosition(_position);
 }

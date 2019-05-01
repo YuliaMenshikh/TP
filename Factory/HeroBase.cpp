@@ -16,9 +16,15 @@ void HeroBase::RemoveDied()
 {
     auto it = std::remove_if(_units->begin(), _units->end(), [&](const UnitInfo::Ptr &_unitInfo)
     {
-        if (!_unitInfo->GetUnit()->IsAlive())
+        Unit::Ptr _unit = _unitInfo->GetUnit();
+        if (_unit->IsComposite())
         {
-            std::cout << _unitInfo->GetUnit()->GetName() << " убит" << std::endl;
+            _unit->RemoveDied();
+        }
+
+        if (!_unit->IsAlive())
+        {
+            std::cout << _unit->GetName() << " убит" << std::endl;
             return true;
         }
         return false;
