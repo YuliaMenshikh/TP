@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Unit.h"
+#include "Position.h"
 
 class UnitBase: public Unit
 {
@@ -14,6 +15,10 @@ public:
     virtual int GetSpeed() const override;
     virtual int GetStockShots() const override;
     virtual int GetMagicPoints() const override;
+
+    virtual void DecreaseUnitsOfLfe(int amount) override;
+
+    virtual bool IsAlive() const override;
 
 private:
     int _power;

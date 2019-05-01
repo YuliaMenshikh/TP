@@ -49,7 +49,20 @@ add_executable(Factory
         Dungeon/YlayaSingleton.h
         Hero.h
         HeroBase.h
-        Test/test1.cpp Exceptions.h)
+        Test/test1.cpp
+        Exceptions.h
+        Squad.h
+        Squad.cpp
+        Position.h
+        BattleField.h
+        BattleField.cpp
+        Strategy.h
+        SimpleStrategy.h
+        SimpleStrategy.cpp
+        UnitInfo.h
+        UnitInfo.cpp
+        Direction.h
+        HeroBase.cpp)
 
 add_subdirectory(googletest-master) 
 

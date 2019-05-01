@@ -23,9 +23,9 @@ void DungeonFactory::GetAvailableUnits(UnitItems& units) const
     units.push_back(UnitItem(DungeonShadowDragon, ShadowDragon::name()));
 }
 
-Hero& DungeonFactory::GetHero() const
+Hero::Ptr DungeonFactory::CreateHero() const
 {
-    return Ylaya::getInstance();
+    return std::make_shared<Ylaya>();
 }
 
 Unit::Ptr DungeonFactory::CreateUnit(int unitId) const

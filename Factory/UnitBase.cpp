@@ -45,3 +45,15 @@ int UnitBase::GetMagicPoints() const
 {
     return _magicPoints;
 }
+
+void UnitBase::DecreaseUnitsOfLfe(int amount)
+{
+    _unitsOfLife -= amount;
+    if (_unitsOfLife < 0)
+        _unitsOfLife = 0;
+}
+
+bool UnitBase::IsAlive() const
+{
+    return _unitsOfLife > 0;
+}
