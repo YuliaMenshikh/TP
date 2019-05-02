@@ -3,6 +3,7 @@
 #include "Exceptions.h"
 
 #include<algorithm>
+#include <climits>
 
 void SimpleStrategy::MakeStep(Hero &heroFrom, Hero &heroTo)
 {
