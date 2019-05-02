@@ -2,7 +2,7 @@
 #include "BattleField.h"
 #include "Exceptions.h"
 
-#include<algorithm>
+#include <algorithm>
 #include <climits>
 
 void SimpleStrategy::MakeStep(Hero &heroFrom, Hero &heroTo)
