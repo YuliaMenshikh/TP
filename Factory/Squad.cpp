@@ -1,5 +1,6 @@
 #include "Squad.h"
 #include "Exceptions.h"
+#include <algorithm>
 
 Squad::Squad(const std::string &name) : _name(name), _units(new Unit::Collection)
 {
@@ -104,11 +105,6 @@ Unit::CollectionPtr Squad::GetUnits() const
 {
     return _units;
 }
-
-/*void Squad::DecreaseUnitsOfLife(int value)
-{
-    throw GameException("Squad::DecreaseUnitsOfLfe called ");
-}*/
 
 bool Squad::IsAlive() const
 {
