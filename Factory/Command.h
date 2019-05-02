@@ -10,6 +10,7 @@ class Command
 public:
     typedef std::shared_ptr<Command> Ptr;
 
+    virtual ~Command() {}
     virtual void execute() = 0;
 };
 
