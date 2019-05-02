@@ -48,13 +48,59 @@ RM = /Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /Users/yulia/Desktop/DIHT/2term/TP/Factory
+CMAKE_SOURCE_DIR = /Users/yulia/Desktop/DIHT/2term/Code/git/TP/Factory
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug
+CMAKE_BINARY_DIR = /Users/yulia/Desktop/DIHT/2term/Code/git/TP/Factory/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
+
+# Special rule for the target install/local
+install/local: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local
+
+# Special rule for the target install/local
+install/local/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing only the local directory..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_LOCAL_ONLY=1 -P cmake_install.cmake
+.PHONY : install/local/fast
+
+# Special rule for the target install/strip
+install/strip: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip
+
+# Special rule for the target install/strip
+install/strip/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
+.PHONY : install/strip/fast
+
+# Special rule for the target install
+install: preinstall
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+.PHONY : install
+
+# Special rule for the target install
+install/fast: preinstall/fast
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Install the project..."
+	/Applications/CLion.app/Contents/bin/cmake/mac/bin/cmake -P cmake_install.cmake
+.PHONY : install/fast
+
+# Special rule for the target list_install_components
+list_install_components:
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Available install components are: \"Unspecified\""
+.PHONY : list_install_components
+
+# Special rule for the target list_install_components
+list_install_components/fast: list_install_components
+
+.PHONY : list_install_components/fast
 
 # Special rule for the target rebuild_cache
 rebuild_cache:
@@ -80,9 +126,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/CMakeFiles /Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yulia/Desktop/DIHT/2term/Code/git/TP/Factory/cmake-build-debug/CMakeFiles /Users/yulia/Desktop/DIHT/2term/Code/git/TP/Factory/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yulia/Desktop/DIHT/2term/TP/Factory/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /Users/yulia/Desktop/DIHT/2term/Code/git/TP/Factory/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -122,6 +168,112 @@ Factory: cmake_check_build_system
 Factory/fast:
 	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/build
 .PHONY : Factory/fast
+
+#=============================================================================
+# Target rules for targets named gmock
+
+# Build rule for target.
+gmock: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmock
+.PHONY : gmock
+
+# fast build rule for target.
+gmock/fast:
+	$(MAKE) -f googletest-master/googlemock/CMakeFiles/gmock.dir/build.make googletest-master/googlemock/CMakeFiles/gmock.dir/build
+.PHONY : gmock/fast
+
+#=============================================================================
+# Target rules for targets named gmock_main
+
+# Build rule for target.
+gmock_main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gmock_main
+.PHONY : gmock_main
+
+# fast build rule for target.
+gmock_main/fast:
+	$(MAKE) -f googletest-master/googlemock/CMakeFiles/gmock_main.dir/build.make googletest-master/googlemock/CMakeFiles/gmock_main.dir/build
+.PHONY : gmock_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest_main
+
+# Build rule for target.
+gtest_main: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest_main
+.PHONY : gtest_main
+
+# fast build rule for target.
+gtest_main/fast:
+	$(MAKE) -f googletest-master/googlemock/gtest/CMakeFiles/gtest_main.dir/build.make googletest-master/googlemock/gtest/CMakeFiles/gtest_main.dir/build
+.PHONY : gtest_main/fast
+
+#=============================================================================
+# Target rules for targets named gtest
+
+# Build rule for target.
+gtest: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 gtest
+.PHONY : gtest
+
+# fast build rule for target.
+gtest/fast:
+	$(MAKE) -f googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/build.make googletest-master/googlemock/gtest/CMakeFiles/gtest.dir/build
+.PHONY : gtest/fast
+
+BattleField.o: BattleField.cpp.o
+
+.PHONY : BattleField.o
+
+# target to build an object file
+BattleField.cpp.o:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/BattleField.cpp.o
+.PHONY : BattleField.cpp.o
+
+BattleField.i: BattleField.cpp.i
+
+.PHONY : BattleField.i
+
+# target to preprocess a source file
+BattleField.cpp.i:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/BattleField.cpp.i
+.PHONY : BattleField.cpp.i
+
+BattleField.s: BattleField.cpp.s
+
+.PHONY : BattleField.s
+
+# target to generate assembly for a file
+BattleField.cpp.s:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/BattleField.cpp.s
+.PHONY : BattleField.cpp.s
+
+Command.o: Command.cpp.o
+
+.PHONY : Command.o
+
+# target to build an object file
+Command.cpp.o:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/Command.cpp.o
+.PHONY : Command.cpp.o
+
+Command.i: Command.cpp.i
+
+.PHONY : Command.i
+
+# target to preprocess a source file
+Command.cpp.i:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/Command.cpp.i
+.PHONY : Command.cpp.i
+
+Command.s: Command.cpp.s
+
+.PHONY : Command.s
+
+# target to generate assembly for a file
+Command.cpp.s:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/Command.cpp.s
+.PHONY : Command.cpp.s
 
 Dungeon/BloodMaiden.o: Dungeon/BloodMaiden.cpp.o
 
@@ -339,6 +491,33 @@ Dungeon/ShadowWitch.cpp.s:
 	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/Dungeon/ShadowWitch.cpp.s
 .PHONY : Dungeon/ShadowWitch.cpp.s
 
+Game.o: Game.cpp.o
+
+.PHONY : Game.o
+
+# target to build an object file
+Game.cpp.o:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/Game.cpp.o
+.PHONY : Game.cpp.o
+
+Game.i: Game.cpp.i
+
+.PHONY : Game.i
+
+# target to preprocess a source file
+Game.cpp.i:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/Game.cpp.i
+.PHONY : Game.cpp.i
+
+Game.s: Game.cpp.s
+
+.PHONY : Game.s
+
+# target to generate assembly for a file
+Game.cpp.s:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/Game.cpp.s
+.PHONY : Game.cpp.s
+
 Heaven/Angel.o: Heaven/Angel.cpp.o
 
 .PHONY : Heaven/Angel.o
@@ -555,6 +734,114 @@ Heaven/Priest.cpp.s:
 	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/Heaven/Priest.cpp.s
 .PHONY : Heaven/Priest.cpp.s
 
+HeroBase.o: HeroBase.cpp.o
+
+.PHONY : HeroBase.o
+
+# target to build an object file
+HeroBase.cpp.o:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/HeroBase.cpp.o
+.PHONY : HeroBase.cpp.o
+
+HeroBase.i: HeroBase.cpp.i
+
+.PHONY : HeroBase.i
+
+# target to preprocess a source file
+HeroBase.cpp.i:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/HeroBase.cpp.i
+.PHONY : HeroBase.cpp.i
+
+HeroBase.s: HeroBase.cpp.s
+
+.PHONY : HeroBase.s
+
+# target to generate assembly for a file
+HeroBase.cpp.s:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/HeroBase.cpp.s
+.PHONY : HeroBase.cpp.s
+
+SimpleStrategy.o: SimpleStrategy.cpp.o
+
+.PHONY : SimpleStrategy.o
+
+# target to build an object file
+SimpleStrategy.cpp.o:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/SimpleStrategy.cpp.o
+.PHONY : SimpleStrategy.cpp.o
+
+SimpleStrategy.i: SimpleStrategy.cpp.i
+
+.PHONY : SimpleStrategy.i
+
+# target to preprocess a source file
+SimpleStrategy.cpp.i:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/SimpleStrategy.cpp.i
+.PHONY : SimpleStrategy.cpp.i
+
+SimpleStrategy.s: SimpleStrategy.cpp.s
+
+.PHONY : SimpleStrategy.s
+
+# target to generate assembly for a file
+SimpleStrategy.cpp.s:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/SimpleStrategy.cpp.s
+.PHONY : SimpleStrategy.cpp.s
+
+Squad.o: Squad.cpp.o
+
+.PHONY : Squad.o
+
+# target to build an object file
+Squad.cpp.o:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/Squad.cpp.o
+.PHONY : Squad.cpp.o
+
+Squad.i: Squad.cpp.i
+
+.PHONY : Squad.i
+
+# target to preprocess a source file
+Squad.cpp.i:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/Squad.cpp.i
+.PHONY : Squad.cpp.i
+
+Squad.s: Squad.cpp.s
+
+.PHONY : Squad.s
+
+# target to generate assembly for a file
+Squad.cpp.s:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/Squad.cpp.s
+.PHONY : Squad.cpp.s
+
+Test/test1.o: Test/test1.cpp.o
+
+.PHONY : Test/test1.o
+
+# target to build an object file
+Test/test1.cpp.o:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/Test/test1.cpp.o
+.PHONY : Test/test1.cpp.o
+
+Test/test1.i: Test/test1.cpp.i
+
+.PHONY : Test/test1.i
+
+# target to preprocess a source file
+Test/test1.cpp.i:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/Test/test1.cpp.i
+.PHONY : Test/test1.cpp.i
+
+Test/test1.s: Test/test1.cpp.s
+
+.PHONY : Test/test1.s
+
+# target to generate assembly for a file
+Test/test1.cpp.s:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/Test/test1.cpp.s
+.PHONY : Test/test1.cpp.s
+
 UnitBase.o: UnitBase.cpp.o
 
 .PHONY : UnitBase.o
@@ -581,6 +868,33 @@ UnitBase.s: UnitBase.cpp.s
 UnitBase.cpp.s:
 	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/UnitBase.cpp.s
 .PHONY : UnitBase.cpp.s
+
+UnitInfo.o: UnitInfo.cpp.o
+
+.PHONY : UnitInfo.o
+
+# target to build an object file
+UnitInfo.cpp.o:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/UnitInfo.cpp.o
+.PHONY : UnitInfo.cpp.o
+
+UnitInfo.i: UnitInfo.cpp.i
+
+.PHONY : UnitInfo.i
+
+# target to preprocess a source file
+UnitInfo.cpp.i:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/UnitInfo.cpp.i
+.PHONY : UnitInfo.cpp.i
+
+UnitInfo.s: UnitInfo.cpp.s
+
+.PHONY : UnitInfo.s
+
+# target to generate assembly for a file
+UnitInfo.cpp.s:
+	$(MAKE) -f CMakeFiles/Factory.dir/build.make CMakeFiles/Factory.dir/UnitInfo.cpp.s
+.PHONY : UnitInfo.cpp.s
 
 main.o: main.cpp.o
 
@@ -615,9 +929,23 @@ help:
 	@echo "... all (the default if no target is provided)"
 	@echo "... clean"
 	@echo "... depend"
+	@echo "... install/local"
+	@echo "... install/strip"
+	@echo "... install"
+	@echo "... list_install_components"
 	@echo "... rebuild_cache"
 	@echo "... edit_cache"
 	@echo "... Factory"
+	@echo "... gmock"
+	@echo "... gmock_main"
+	@echo "... gtest_main"
+	@echo "... gtest"
+	@echo "... BattleField.o"
+	@echo "... BattleField.i"
+	@echo "... BattleField.s"
+	@echo "... Command.o"
+	@echo "... Command.i"
+	@echo "... Command.s"
 	@echo "... Dungeon/BloodMaiden.o"
 	@echo "... Dungeon/BloodMaiden.i"
 	@echo "... Dungeon/BloodMaiden.s"
@@ -642,6 +970,9 @@ help:
 	@echo "... Dungeon/ShadowWitch.o"
 	@echo "... Dungeon/ShadowWitch.i"
 	@echo "... Dungeon/ShadowWitch.s"
+	@echo "... Game.o"
+	@echo "... Game.i"
+	@echo "... Game.s"
 	@echo "... Heaven/Angel.o"
 	@echo "... Heaven/Angel.i"
 	@echo "... Heaven/Angel.s"
@@ -666,9 +997,24 @@ help:
 	@echo "... Heaven/Priest.o"
 	@echo "... Heaven/Priest.i"
 	@echo "... Heaven/Priest.s"
+	@echo "... HeroBase.o"
+	@echo "... HeroBase.i"
+	@echo "... HeroBase.s"
+	@echo "... SimpleStrategy.o"
+	@echo "... SimpleStrategy.i"
+	@echo "... SimpleStrategy.s"
+	@echo "... Squad.o"
+	@echo "... Squad.i"
+	@echo "... Squad.s"
+	@echo "... Test/test1.o"
+	@echo "... Test/test1.i"
+	@echo "... Test/test1.s"
 	@echo "... UnitBase.o"
 	@echo "... UnitBase.i"
 	@echo "... UnitBase.s"
+	@echo "... UnitInfo.o"
+	@echo "... UnitInfo.i"
+	@echo "... UnitInfo.s"
 	@echo "... main.o"
 	@echo "... main.i"
 	@echo "... main.s"

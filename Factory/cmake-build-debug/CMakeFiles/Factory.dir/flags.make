@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++14
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/Users/yulia/Desktop/DIHT/2term/TP/Factory/. -I/Users/yulia/Desktop/DIHT/2term/TP/Factory/Dungeon -I/Users/yulia/Desktop/DIHT/2term/TP/Factory/Heaven 
+CXX_INCLUDES = -I/Users/yulia/Desktop/DIHT/2term/Code/git/TP/Factory/. -I/Users/yulia/Desktop/DIHT/2term/Code/git/TP/Factory/Dungeon -I/Users/yulia/Desktop/DIHT/2term/Code/git/TP/Factory/Heaven -I/Users/yulia/Desktop/DIHT/2term/Code/git/TP/Factory/googletest-master/googlemock/include -isystem /Users/yulia/Desktop/DIHT/2term/Code/git/TP/Factory/googletest-master/googletest/include -isystem /Users/yulia/Desktop/DIHT/2term/Code/git/TP/Factory/googletest-master/googletest 
 
