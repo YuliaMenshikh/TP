@@ -11,9 +11,10 @@ void SimpleStrategy::MakeStep(Hero &heroFrom, Hero &heroTo)
 
     if (GetStandaloneUnitToAttack(heroFrom, heroTo, unitFrom, unitTo))
     {
-        unitTo->GetStandAloneUnit()->DecreaseUnitsOfLife(unitFrom->GetPower());
+        ExecuteCommand(Command::Ptr(new AttackCommand(unitFrom, heroTo, unitTo)));
+        //unitTo->GetStandAloneUnit()->DecreaseUnitsOfLife(unitFrom->GetPower());
         std::cout << unitFrom->GetName() << " атаковал " << unitTo->GetName() << std::endl;
-        heroTo.RemoveDied();
+        //heroTo.RemoveDied();
         return;
     }
 
@@ -29,22 +30,22 @@ void SimpleStrategy::MakeStep(Hero &heroFrom, Hero &heroTo)
 
         if (positionFrom.GetX() < positionTo.GetX() && BattleField::getInstance().IsFreePosition(positionFrom.Right()))
         {
-            unitInfoFrom->Move(Right);
+            ExecuteCommand(Command::Ptr(new MoveCommand(unitInfoFrom, Right)));
             moved = true;
         }
         else if (positionFrom.GetX() > positionTo.GetX() && BattleField::getInstance().IsFreePosition(positionFrom.Left()))
         {
-            unitInfoFrom->Move(Left);
+            ExecuteCommand(Command::Ptr(new MoveCommand(unitInfoFrom, Left)));
             moved = true;
         }
         else if(positionFrom.GetY() < positionTo.GetY() && BattleField::getInstance().IsFreePosition(positionFrom.Up()))
         {
-            unitInfoFrom->Move(Up);
+            ExecuteCommand(Command::Ptr(new MoveCommand(unitInfoFrom, Up)));
             moved = true;
         }
         else if(positionFrom.GetY() > positionTo.GetY() && BattleField::getInstance().IsFreePosition(positionFrom.Down()))
         {
-            unitInfoFrom->Move(Down);
+            ExecuteCommand(Command::Ptr(new MoveCommand(unitInfoFrom, Down)));
             moved = true;
         }
     }
@@ -184,6 +185,11 @@ bool SimpleStrategy::GetClosestUnits(Hero &heroFrom, Hero &heroTo, UnitInfo::Ptr
     }
 
    return MinDistance < INT_MAX;
+}
+
+void SimpleStrategy::ExecuteCommand(Command::Ptr command)
+{
+    command->execute();
 }
 
 

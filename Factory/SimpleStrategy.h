@@ -2,6 +2,7 @@
 
 #include "Strategy.h"
 #include "Unit.h"
+#include "Command.h"
 
 class SimpleStrategy : public Strategy
 {
@@ -12,4 +13,6 @@ private:
     static bool GetStandaloneUnitToAttack(Hero &heroFrom, Hero &heroTo, Unit::Ptr &unitFrom, Unit::Ptr &unitTo);
     static bool GetClosestUnits(Hero &heroFrom, Hero &heroTo, UnitInfo::Ptr &unitInfoFrom, UnitInfo::Ptr &unitInfoTo);
     static bool CanMoveToward(const Position &positionFrom, const Position &positionTo);
+
+    static void ExecuteCommand(Command::Ptr command);
 };

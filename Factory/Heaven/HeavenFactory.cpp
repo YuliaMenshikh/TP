@@ -1,5 +1,5 @@
 #include "HeavenFactory.h"
-#include "DuncanSingleton.h"
+#include "DuncanHero.h"
 #include "Angel.h"
 #include "Archer.h"
 #include "Cavalier.h"

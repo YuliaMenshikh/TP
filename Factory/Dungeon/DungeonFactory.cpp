@@ -1,5 +1,5 @@
 #include "DungeonFactory.h"
-#include "YlayaSingleton.h"
+#include "YlayaHero.h"
 #include "BloodMaiden.h"
 #include "DarkRaiden.h"
 #include "Hydra.h"

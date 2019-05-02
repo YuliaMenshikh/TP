@@ -45,8 +45,8 @@ add_executable(Factory
         Dungeon/Scout.cpp
         Dungeon/ShadowDragon.cpp
         Dungeon/ShadowWitch.cpp
-        Heaven/DuncanSingleton.h
-        Dungeon/YlayaSingleton.h
+        Heaven/DuncanHero.h
+        Dungeon/YlayaHero.h
         Hero.h
         HeroBase.h
         Test/test1.cpp
@@ -62,7 +62,7 @@ add_executable(Factory
         UnitInfo.h
         UnitInfo.cpp
         Direction.h
-        HeroBase.cpp Game.h Game.cpp)
+        HeroBase.cpp Game.h Game.cpp Command.h Command.cpp)
 
 add_subdirectory(googletest-master) 
 
