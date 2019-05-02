@@ -46,6 +46,6 @@ script:
 notifications:
   email:
     recipients:
-      - yulmen9@gmail.com
+      - menshikh.iuk@phystech.edu
     on_success: always # default: change
     on_failure: always # default: always
