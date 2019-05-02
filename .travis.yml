@@ -42,3 +42,10 @@ script:
   - mkdir build
   - cd build
   - cmake -DCMAKE_CXX_COMPILER=$COMPILER .. && make
+
+notifications:
+  email:
+    recipients:
+      - yulmen9@gmail.com
+    on_success: always # default: change
+    on_failure: always # default: always
