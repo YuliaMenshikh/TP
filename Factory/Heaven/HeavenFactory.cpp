@@ -23,9 +23,9 @@ void HeavenFactory::GetAvailableUnits(UnitItems& units) const
     units.push_back(UnitItem(HeavenPriest, Priest::name()));
 }
 
-Hero::Ptr HeavenFactory::CreateHero() const
+Hero::Ptr HeavenFactory::CreateHero(Strategy::Ptr strategy) const
 {
-    return std::make_shared<Duncan>();
+    return std::make_shared<Duncan>(strategy);
 }
 
 Unit::Ptr HeavenFactory::CreateUnit(int unitId) const

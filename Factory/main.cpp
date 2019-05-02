@@ -11,85 +11,7 @@
 #include "Exceptions.h"
 #include "Squad.h"
 #include "SimpleStrategy.h"
-
-void TestSquad()
-{
-    UnitFactory::Ptr factory1 = std::make_shared<DungeonFactory>();
-    std::shared_ptr<Squad> squad(new Squad("1 squad"));
-    squad->AddUnit(factory1->CreateUnit(DungeonFactory::DungeonScout));
-    squad->AddUnit(factory1->CreateUnit(DungeonFactory::DungeonDarkRaiden));
-    Hero::Ptr hero1 = factory1->CreateHero();
-    hero1->AddUnit(squad, Position(1, 1));
-    hero1->AddUnit(factory1->CreateUnit(DungeonFactory::DungeonMinotaur), Position(3, 7));
-
-    UnitFactory::Ptr factory2 = std::make_shared<HeavenFactory>();
-    Hero::Ptr hero2 = factory2->CreateHero();
-    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenPeasant), Position(5, 6));
-    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenFootman), Position(2, 2));
-    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenPriest), Position(5, 1));
-    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenCavalier), Position(1, 2));
-
-    std::shared_ptr<Strategy> strategy(new SimpleStrategy);
-
-    for (int i = 0; i < 20; ++i)
-    {
-        strategy->MakeStep(hero1, hero2);
-        if (!hero2->HasUnits())
-        {
-            std::cout << "Армия героя " << hero2->GetName() << " уничтожена" << std::endl;
-            break;
-        }
-
-        strategy->MakeStep(hero2, hero1);
-        if (!hero1->HasUnits())
-        {
-            std::cout << "Армия героя " << hero1->GetName() << " уничтожена" << std::endl;
-            break;
-        }
-
-    }
-}
-
-void TestBattleField()
-{
-    //return;
-    UnitFactory::Ptr factory = std::make_shared<DungeonFactory>();
-    Position position1(6, 6);
-    //Position position2(6, 6);
-    factory->CreateHero()->AddUnit(factory->CreateUnit(1), position1);
-    //factory->CreateHero()->AddUnit(factory->CreateUnit(2), position2);
-}
-
-void TestGetClosestUnits()
-{
-    UnitFactory::Ptr factory1 = std::make_shared<DungeonFactory>();
-    UnitFactory::Ptr factory2 = std::make_shared<HeavenFactory>();
-    Hero::Ptr hero1 = factory1->CreateHero();
-    Hero::Ptr hero2 = factory2->CreateHero();
-    hero1->AddUnit(factory1->CreateUnit(DungeonFactory::DungeonMinotaur), Position(1, 1));
-    hero1->AddUnit(factory1->CreateUnit(DungeonFactory::DungeonHydra), Position(3, 3));
-    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenPeasant), Position(5, 6));
-    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenFootman), Position(2, 2));
-    std::shared_ptr<Strategy> strategy(new SimpleStrategy);
-
-    for (int i = 0; i < 10; ++i)
-    {
-        strategy->MakeStep(hero1, hero2);
-        if (!hero2->HasUnits())
-        {
-            std::cout << "Армия героя " << hero2->GetName() << " уничтожена" << std::endl;
-            break;
-        }
-
-        strategy->MakeStep(hero2, hero1);
-        if (!hero1->HasUnits())
-        {
-            std::cout << "Армия героя " << hero1->GetName() << " уничтожена" << std::endl;
-            break;
-        }
-
-    }
-}
+#include "Game.h"
 
 /*void ClientCode()
 {
@@ -163,13 +85,11 @@ void Test()
 
 int main(int argc, char** argv)
 {
+    Game::RunGame();
     try
     {
         Test();
-        TestBattleField();
-        //TestGetClosestUnits();
         //ClientCode();
-        TestSquad();
     }
     catch (const std::exception &exc)
     {

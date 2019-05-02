@@ -4,16 +4,16 @@
 
 #include<algorithm>
 
-void SimpleStrategy::MakeStep(Hero::Ptr heroFrom, Hero::Ptr heroTo)
+void SimpleStrategy::MakeStep(Hero &heroFrom, Hero &heroTo)
 {
     Unit::Ptr unitFrom;
     Unit::Ptr unitTo;
 
-    if(GetUnitToAttack(heroFrom, heroTo, unitFrom, unitTo))
+    if (GetStandaloneUnitToAttack(heroFrom, heroTo, unitFrom, unitTo))
     {
-        unitTo->DecreaseUnitsOfLife(unitFrom->GetPower());
+        unitTo->GetStandAloneUnit()->DecreaseUnitsOfLife(unitFrom->GetPower());
         std::cout << unitFrom->GetName() << " атаковал " << unitTo->GetName() << std::endl;
-        heroTo->RemoveDied();
+        heroTo.RemoveDied();
         return;
     }
 
@@ -56,7 +56,7 @@ void SimpleStrategy::MakeStep(Hero::Ptr heroFrom, Hero::Ptr heroTo)
     }
     else
     {
-        std::cout << "Армии героя "<< heroFrom->GetName() <<" некого двигать" << std::endl;
+        std::cout << "Армии героя "<< heroFrom.GetName() <<" некого двигать" << std::endl;
     }
 }
 
@@ -98,10 +98,11 @@ Unit::Ptr GetUnitWithMinHealth(Unit::CollectionPtr units)
     return unit;
 }
 
-bool SimpleStrategy::GetUnitToAttack(Hero::Ptr heroFrom, Hero::Ptr heroTo, Unit::Ptr &unitFrom, Unit::Ptr &unitTo) const
+bool SimpleStrategy::GetStandaloneUnitToAttack(Hero &heroFrom, Hero &heroTo, Unit::Ptr &unitFrom,
+                                               Unit::Ptr &unitTo)
 {
-    UnitInfo::CollectionPtr unitsInfoFrom = heroFrom->GetUnits();
-    UnitInfo::CollectionPtr unitsInfoTo = heroTo->GetUnits();
+    UnitInfo::CollectionPtr unitsInfoFrom = heroFrom.GetUnits();
+    UnitInfo::CollectionPtr unitsInfoTo = heroTo.GetUnits();
 
     for (auto _unitInfoFrom : *unitsInfoFrom)
     {
@@ -111,18 +112,19 @@ bool SimpleStrategy::GetUnitToAttack(Hero::Ptr heroFrom, Hero::Ptr heroTo, Unit:
         });
         if (it != unitsInfoTo->end())
         {
-            if (_unitInfoFrom->GetUnit()->IsComposite())
+            Unit::Ptr unit = _unitInfoFrom->GetUnit();
+            if (unit->IsComposite())
             {
-                unitFrom = GetUnitWithMaxPower(_unitInfoFrom->GetUnit()->GetUnits());
+                unitFrom = GetUnitWithMaxPower(unit->GetCompositeUnit()->GetUnits());
             }
             else
             {
-                unitFrom = _unitInfoFrom->GetUnit();
+                unitFrom = unit;
             }
 
             if ((*it)->GetUnit()->IsComposite())
             {
-                unitTo = GetUnitWithMinHealth((*it)->GetUnit()->GetUnits());
+                unitTo = GetUnitWithMinHealth((*it)->GetUnit()->GetCompositeUnit()->GetUnits());
             }
             else
             {
@@ -135,7 +137,7 @@ bool SimpleStrategy::GetUnitToAttack(Hero::Ptr heroFrom, Hero::Ptr heroTo, Unit:
     return false;
 }
 
-bool SimpleStrategy::CanMoveToward(const Position &positionFrom, const Position &positionTo) const
+bool SimpleStrategy::CanMoveToward(const Position &positionFrom, const Position &positionTo)
 {
     if (positionFrom.GetX() < positionTo.GetX() && BattleField::getInstance().IsFreePosition(positionFrom.Right()))
         return true;
@@ -152,10 +154,10 @@ bool SimpleStrategy::CanMoveToward(const Position &positionFrom, const Position 
     return false;
 }
 
-bool SimpleStrategy::GetClosestUnits(Hero::Ptr heroFrom, Hero::Ptr heroTo, UnitInfo::Ptr &unitInfoFrom, UnitInfo::Ptr &unitInfoTo) const
+bool SimpleStrategy::GetClosestUnits(Hero &heroFrom, Hero &heroTo, UnitInfo::Ptr &unitInfoFrom, UnitInfo::Ptr &unitInfoTo)
 {
-    UnitInfo::CollectionPtr unitsInfoFrom = heroFrom->GetUnits();
-    UnitInfo::CollectionPtr unitsInfoTo = heroTo->GetUnits();
+    UnitInfo::CollectionPtr unitsInfoFrom = heroFrom.GetUnits();
+    UnitInfo::CollectionPtr unitsInfoTo = heroTo.GetUnits();
 
     int MinDistance = INT_MAX;
 

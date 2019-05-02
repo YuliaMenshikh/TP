@@ -10,6 +10,16 @@ bool Squad::IsComposite() const
     return true;
 }
 
+CompositeUnit* Squad::GetCompositeUnit()
+{
+    return this;
+}
+
+StandaloneUnit* Squad::GetStandAloneUnit()
+{
+    throw NotImplementedException();
+}
+
 std::string Squad::GetName() const
 {
     return _name;
@@ -95,10 +105,10 @@ Unit::CollectionPtr Squad::GetUnits() const
     return _units;
 }
 
-void Squad::DecreaseUnitsOfLife(int value)
+/*void Squad::DecreaseUnitsOfLife(int value)
 {
     throw GameException("Squad::DecreaseUnitsOfLfe called ");
-}
+}*/
 
 bool Squad::IsAlive() const
 {

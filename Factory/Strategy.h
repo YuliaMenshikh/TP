@@ -1,8 +1,11 @@
 #pragma once
 
 #include "Hero.h"
+#include <memory>
 
 struct Strategy
 {
-    virtual void MakeStep(Hero::Ptr heroFrom, Hero::Ptr heroTo) = 0;
+    typedef std::shared_ptr<Strategy> Ptr;
+
+    virtual void MakeStep(Hero &heroFrom, Hero &heroTo) = 0;
 };

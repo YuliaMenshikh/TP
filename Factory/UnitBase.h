@@ -3,13 +3,15 @@
 #include "Unit.h"
 #include "Position.h"
 
-class UnitBase: public Unit
+class UnitBase: public Unit, public StandaloneUnit
 {
 public:
     UnitBase(int MaxPower, int MaxProtection, int MaxUnitsOfLife,
             int MaxInitiative, int MaxSpeed, int MaxStockShots, int MaxMagicPoints);
 
     virtual bool IsComposite() const override;
+    virtual CompositeUnit* GetCompositeUnit() override;
+    virtual StandaloneUnit* GetStandAloneUnit() override;
 
     virtual int GetPower() const override;
     virtual int GetProtection() const override;
@@ -19,13 +21,13 @@ public:
     virtual int GetStockShots() const override;
     virtual int GetMagicPoints() const override;
 
-    virtual Unit::CollectionPtr GetUnits() const override;
+    //virtual Unit::CollectionPtr GetUnits() const override;
 
     virtual void DecreaseUnitsOfLife(int amount) override;
 
     virtual bool IsAlive() const override;
 
-    virtual void RemoveDied() override;
+    //virtual void RemoveDied() override;
 
 private:
     int _power;

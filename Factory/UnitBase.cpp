@@ -17,6 +17,16 @@ bool UnitBase::IsComposite() const
     return false;
 }
 
+CompositeUnit* UnitBase::GetCompositeUnit()
+{
+    throw NotImplementedException();
+}
+
+StandaloneUnit* UnitBase::GetStandAloneUnit()
+{
+    return this;
+}
+
 int UnitBase::GetPower() const
 {
     return _power;
@@ -52,10 +62,10 @@ int UnitBase::GetMagicPoints() const
     return _magicPoints;
 }
 
-Unit::CollectionPtr UnitBase::GetUnits() const
+/*Unit::CollectionPtr UnitBase::GetUnits() const
 {
     throw GameException("UnitBase::GetUnits() called");
-}
+}*/
 
 void UnitBase::DecreaseUnitsOfLife(int amount)
 {
@@ -69,7 +79,7 @@ bool UnitBase::IsAlive() const
     return _unitsOfLife > 0;
 }
 
-void UnitBase::RemoveDied()
+/*void UnitBase::RemoveDied()
 {
     throw GameException("UnitBase::RemoveDied() called");
-}
+}*/

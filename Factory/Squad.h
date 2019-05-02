@@ -4,13 +4,15 @@
 #include <vector>
 #include <string>
 
-class Squad : public Unit
+class Squad : public Unit, public CompositeUnit
 {
 public:
     Squad(const std::string &name);
     void AddUnit(Unit::Ptr unit);
 
     virtual bool IsComposite() const override;
+    virtual CompositeUnit* GetCompositeUnit() override;
+    virtual StandaloneUnit* GetStandAloneUnit() override;
 
     virtual std::string GetName() const override;
     virtual int GetPower() const override;
@@ -23,7 +25,7 @@ public:
 
     virtual Unit::CollectionPtr GetUnits() const override;
 
-    virtual void DecreaseUnitsOfLife(int value) override;
+    //virtual void DecreaseUnitsOfLife(int value) override;
 
     virtual bool IsAlive() const override;
 

@@ -37,3 +37,9 @@ class InvalidDirectionException : public GameException
 public:
     InvalidDirectionException() : GameException("Invalid direction") {}
 };
+
+class NotImplementedException : public GameException
+{
+public:
+    NotImplementedException() : GameException("Not implemented") {}
+};

@@ -6,10 +6,10 @@
 class SimpleStrategy : public Strategy
 {
 public:
-    virtual void MakeStep(Hero::Ptr heroFrom, Hero::Ptr heroTo) override;
+    virtual void MakeStep(Hero &heroFrom, Hero &heroTo) override;
 
 private:
-    bool GetUnitToAttack(Hero::Ptr heroFrom, Hero::Ptr heroTo, Unit::Ptr &unitFrom, Unit::Ptr &unitTo) const;
-    bool GetClosestUnits(Hero::Ptr heroFrom, Hero::Ptr heroTo, UnitInfo::Ptr &unitInfoFrom, UnitInfo::Ptr &unitInfoTo) const;
-    bool CanMoveToward(const Position &positionFrom, const Position &positionTo) const;
+    static bool GetStandaloneUnitToAttack(Hero &heroFrom, Hero &heroTo, Unit::Ptr &unitFrom, Unit::Ptr &unitTo);
+    static bool GetClosestUnits(Hero &heroFrom, Hero &heroTo, UnitInfo::Ptr &unitInfoFrom, UnitInfo::Ptr &unitInfoTo);
+    static bool CanMoveToward(const Position &positionFrom, const Position &positionTo);
 };

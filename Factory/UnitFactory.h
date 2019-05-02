@@ -5,6 +5,7 @@
 #include <utility>
 #include "Hero.h"
 #include "Unit.h"
+#include "Strategy.h"
 
 #include <memory>
 
@@ -16,7 +17,7 @@ struct UnitFactory
 
     virtual ~UnitFactory() {}
     virtual void GetAvailableUnits(UnitItems& units) const = 0;
-    virtual Hero::Ptr CreateHero() const = 0;
+    virtual Hero::Ptr CreateHero(Strategy::Ptr strategy) const = 0;
     virtual Unit::Ptr CreateUnit(int unitId) const = 0;
     virtual std::string GetName() const = 0;
 };

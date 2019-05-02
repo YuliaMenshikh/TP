@@ -2,6 +2,13 @@
 
 #include <algorithm>
 
+HeroBase::HeroBase(Strategy::Ptr strategy) : _strategy(strategy), _units(std::make_shared<UnitInfo::Collection>()) {}
+
+void HeroBase::MakeStep(Hero &heroTo)
+{
+    _strategy->MakeStep(*this, heroTo);
+}
+
 UnitInfo::CollectionPtr HeroBase::GetUnits() const
 {
     return  _units;
@@ -19,7 +26,7 @@ void HeroBase::RemoveDied()
         Unit::Ptr _unit = _unitInfo->GetUnit();
         if (_unit->IsComposite())
         {
-            _unit->RemoveDied();
+            _unit->GetCompositeUnit()->RemoveDied();
         }
 
         if (!_unit->IsAlive())
