@@ -45,7 +45,5 @@ script:
 
 notifications:
   email:
-    recipients:
-      - menshikh.iuk@phystech.edu
     on_success: always # default: change
     on_failure: always # default: always
