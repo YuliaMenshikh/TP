@@ -62,11 +62,6 @@ int UnitBase::GetMagicPoints() const
     return _magicPoints;
 }
 
-/*Unit::CollectionPtr UnitBase::GetUnits() const
-{
-    throw GameException("UnitBase::GetUnits() called");
-}*/
-
 void UnitBase::DecreaseUnitsOfLife(int amount)
 {
     _unitsOfLife -= amount;
@@ -78,8 +73,3 @@ bool UnitBase::IsAlive() const
 {
     return _unitsOfLife > 0;
 }
-
-/*void UnitBase::RemoveDied()
-{
-    throw GameException("UnitBase::RemoveDied() called");
-}*/

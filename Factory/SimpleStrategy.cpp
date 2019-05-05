@@ -12,10 +12,8 @@ void SimpleStrategy::MakeStep(Hero &heroFrom, Hero &heroTo)
 
     if (GetStandaloneUnitToAttack(heroFrom, heroTo, unitFrom, unitTo))
     {
-        ExecuteCommand(Command::Ptr(new AttackCommand(unitFrom, heroTo, unitTo)));
-        //unitTo->GetStandAloneUnit()->DecreaseUnitsOfLife(unitFrom->GetPower());
         std::cout << unitFrom->GetName() << " атаковал " << unitTo->GetName() << std::endl;
-        //heroTo.RemoveDied();
+        ExecuteCommand(Command::Ptr(new AttackCommand(unitFrom, heroTo, unitTo)));
         return;
     }
 

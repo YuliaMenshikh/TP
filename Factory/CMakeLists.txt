@@ -62,7 +62,11 @@ add_executable(Factory
         UnitInfo.h
         UnitInfo.cpp
         Direction.h
-        HeroBase.cpp Game.h Game.cpp Command.h Command.cpp)
+        HeroBase.cpp
+        Game.h
+        Game.cpp
+        Command.h
+        Command.cpp Strategy1.h Strategy1.cpp)
 
 add_subdirectory(googletest-master) 
 

@@ -21,13 +21,9 @@ public:
     virtual int GetStockShots() const override;
     virtual int GetMagicPoints() const override;
 
-    //virtual Unit::CollectionPtr GetUnits() const override;
-
     virtual void DecreaseUnitsOfLife(int amount) override;
 
     virtual bool IsAlive() const override;
-
-    //virtual void RemoveDied() override;
 
 private:
     int _power;

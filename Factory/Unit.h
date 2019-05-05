@@ -30,14 +30,6 @@ struct Unit
     virtual int GetStockShots() const = 0;
     virtual int GetMagicPoints() const = 0;
     virtual bool IsAlive() const = 0;
-    /*
-    //composite
-    virtual Unit::CollectionPtr GetUnits() const = 0;
-    virtual void RemoveDied() = 0;
-
-    //alone
-    virtual void DecreaseUnitsOfLife(int) = 0;
-     */
 };
 
 struct CompositeUnit

@@ -25,8 +25,6 @@ public:
 
     virtual Unit::CollectionPtr GetUnits() const override;
 
-    //virtual void DecreaseUnitsOfLife(int value) override;
-
     virtual bool IsAlive() const override;
 
     virtual void RemoveDied() override;

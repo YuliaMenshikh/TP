@@ -3,6 +3,7 @@
 #include "Dungeon/DungeonFactory.h"
 #include "Heaven/HeavenFactory.h"
 #include "SimpleStrategy.h"
+#include "Strategy1.h"
 #include "Squad.h"
 
 void  Game::RunGame()
@@ -14,7 +15,7 @@ void  Game::RunGame()
 
 Hero::Ptr Game::ConstructYalayaArmy()
 {
-    std::shared_ptr<Strategy> strategy(new SimpleStrategy);
+    std::shared_ptr<Strategy> strategy(new Strategy1);
 
     UnitFactory::Ptr factory1 = std::make_shared<DungeonFactory>();
     std::shared_ptr<Squad> squad(new Squad("Yalaya squad1"));
@@ -23,7 +24,7 @@ Hero::Ptr Game::ConstructYalayaArmy()
 
     Hero::Ptr hero1 = factory1->CreateHero(strategy);
     hero1->AddUnit(squad, Position(1, 1));
-    hero1->AddUnit(factory1->CreateUnit(DungeonFactory::DungeonMinotaur), Position(3, 7));
+    hero1->AddUnit(factory1->CreateUnit(DungeonFactory::DungeonMinotaur), Position(1, 4));
     return hero1;
 }
 
@@ -38,7 +39,7 @@ Hero::Ptr Game::ConstructDuncanArmy()
     squad->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenFootman));
 
     hero2->AddUnit(squad, Position(5, 6));
-    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenCavalier), Position(1, 2));
+    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenPriest), Position(1, 2));
     return hero2;
 }
 
