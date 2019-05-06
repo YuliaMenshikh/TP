@@ -1,5 +1,4 @@
 #include "DoubleHealthUnitDecorator.h"
-#include "Exceptions.h"
 
 DoubleHealthUnitDecorator::DoubleHealthUnitDecorator(Unit::Ptr unit) : UnitDecorator(unit) {}
 
@@ -10,5 +9,5 @@ StandaloneUnit* DoubleHealthUnitDecorator::GetStandAloneUnit()
 
 void DoubleHealthUnitDecorator::DecreaseUnitsOfLife(int amount)
 {
-    GetStandAloneUnit()->DecreaseUnitsOfLife(amount / 2);
+    _unit->GetStandAloneUnit()->DecreaseUnitsOfLife(amount / 2);
 }
