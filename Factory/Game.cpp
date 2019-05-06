@@ -40,8 +40,8 @@ Hero::Ptr Game::ConstructDuncanArmy()
     squad->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenPeasant));
     squad->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenFootman));
 
-    hero2->AddUnit(squad, Position(5, 6));
-    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenPriest), Position(1, 2));
+    hero2->AddUnit(squad, Position(1, 2));
+    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenPriest), Position(2, 1));
     return hero2;
 }
 
@@ -53,6 +53,7 @@ void Game::RunBattle(Hero::Ptr hero1, Hero::Ptr hero2)
         if (!hero2->HasUnits())
         {
             std::cout << "Армия героя " << hero2->GetName() << " уничтожена" << std::endl;
+            std::cout << "Вы победили" << std::endl;
             break;
         }
 
@@ -60,6 +61,7 @@ void Game::RunBattle(Hero::Ptr hero1, Hero::Ptr hero2)
         if (!hero1->HasUnits())
         {
             std::cout << "Армия героя " << hero1->GetName() << " уничтожена" << std::endl;
+            std::cout << "Вы проиграли" << std::endl;
             break;
         }
     }
