@@ -2,10 +2,10 @@
 
 #include "Unit.h"
 
-class Decorator : public Unit, public StandaloneUnit
+class UnitDecorator : public Unit
 {
 public:
-    Decorator(Unit::Ptr unit) : _unit(unit) {}
+    UnitDecorator(Unit::Ptr unit) : _unit(unit) {}
 
     virtual bool IsComposite() const override;
     virtual CompositeUnit* GetCompositeUnit() override;

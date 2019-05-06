@@ -1,11 +1,11 @@
 #pragma once
 
-#include "Decorator.h"
+#include "UnitDecorator.h"
 
-class DoubleHealthUnitDecorator : public Decorator
+class DoubleHealthUnitDecorator : public UnitDecorator, public StandaloneUnit
 {
 public:
-    DoubleHealthUnitDecorator(Unit::Ptr unit) : Decorator(unit) {}
+    DoubleHealthUnitDecorator(Unit::Ptr unit);
 
     virtual void DecreaseUnitsOfLife(int amount) override;
 };

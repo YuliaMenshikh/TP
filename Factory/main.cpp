@@ -167,8 +167,8 @@ int main(int argc, char** argv)
 {
     try
     {
-        ClientCode();
-        //Game::RunGame();
+        //ClientCode();
+        Game::RunGame();
         Test();
     }
     catch (const std::exception &exc)
