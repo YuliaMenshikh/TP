@@ -66,11 +66,22 @@ add_executable(Factory
         Game.h
         Game.cpp
         Command.h
-        Command.cpp Strategy1.h Strategy1.cpp UnitDecorator.h DoubleHealthUnitDecorator.cpp DoubleHealthUnitDecorator.h UnitDecorator.cpp Logger.h)
+        Command.cpp
+        Strategy1.h
+        Strategy1.cpp
+        UnitDecorator.h
+        DoubleHealthUnitDecorator.cpp
+        DoubleHealthUnitDecorator.h
+        UnitDecorator.cpp
+        Logger.h
+        ConsoleLogger.h
+        Logger.cpp FileLogger.h)
 
 add_subdirectory(googletest-master) 
 
 include_directories(googletest-master/googletest/include) 
-include_directories(googletest-master/googlemock/include) 
+include_directories(googletest-master/googlemock/include)
 
-target_link_libraries(Factory gtest gtest_main) 
+enable_testing()
+
+target_link_libraries(Factory gtest gtest_main)

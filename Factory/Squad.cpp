@@ -1,5 +1,6 @@
 #include "Squad.h"
 #include "Exceptions.h"
+#include "Logger.h"
 #include <algorithm>
 
 Squad::Squad(const std::string &name) : _name(name), _units(new Unit::Collection)
@@ -117,7 +118,7 @@ void Squad::RemoveDied()
     {
         if (!_unit->IsAlive())
         {
-            std::cout << _unit->GetName() << " из отряда " << GetName() << " убит" << std::endl;
+            Logger::getInstance().Write(_unit->GetName() + " из отряда " + GetName() + " убит\n");
             return true;
         }
         return false;

@@ -6,6 +6,7 @@
 #include "Strategy1.h"
 #include "Squad.h"
 #include "DoubleHealthUnitDecorator.h"
+#include "Logger.h"
 
 void  Game::RunGame()
 {
@@ -52,16 +53,16 @@ void Game::RunBattle(Hero::Ptr hero1, Hero::Ptr hero2)
         hero1->MakeStep(*hero2);
         if (!hero2->HasUnits())
         {
-            std::cout << "Армия героя " << hero2->GetName() << " уничтожена" << std::endl;
-            std::cout << "Вы победили" << std::endl;
+            Logger::getInstance().Write("Армия героя " + hero2->GetName() + " уничтожена" + "\n");
+            Logger::getInstance().Write("Вы победили\n");
             break;
         }
 
         hero2->MakeStep(*hero1);
         if (!hero1->HasUnits())
         {
-            std::cout << "Армия героя " << hero1->GetName() << " уничтожена" << std::endl;
-            std::cout << "Вы проиграли" << std::endl;
+            Logger::getInstance().Write("Армия героя " + hero1->GetName() + " уничтожена" + "\n");
+            Logger::getInstance().Write("Вы проиграли\n");
             break;
         }
     }

@@ -1,4 +1,5 @@
 #include "HeroBase.h"
+#include "Logger.h"
 
 #include <algorithm>
 
@@ -31,7 +32,7 @@ void HeroBase::RemoveDied()
 
         if (!_unit->IsAlive())
         {
-            std::cout << _unit->GetName() << " убит" << std::endl;
+            Logger::getInstance().Write(_unit->GetName() + " убит\n");
             return true;
         }
         return false;

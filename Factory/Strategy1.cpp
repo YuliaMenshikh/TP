@@ -1,9 +1,11 @@
 #include "Strategy1.h"
 #include "Exceptions.h"
 #include "BattleField.h"
+#include "Logger.h"
 
 #include <algorithm>
 #include <climits>
+#include <sstream>
 
 void Strategy1::MakeStep(Hero &heroFrom, Hero &heroTo)
 {
@@ -12,13 +14,13 @@ void Strategy1::MakeStep(Hero &heroFrom, Hero &heroTo)
 
     if (GetStandaloneUnitToAttackAndKill(heroFrom, heroTo, unitFrom, unitTo))
     {
-        std::cout << unitFrom->GetName() << " атаковал " << unitTo->GetName() << std::endl;
+        Logger::getInstance().Write(unitFrom->GetName() + " атаковал " + unitTo->GetName() + "\n");
         ExecuteCommand(Command::Ptr(new AttackCommand(unitFrom, heroTo, unitTo)));
         return;
     }
     if (GetStandaloneUnitToAttack(heroFrom, heroTo, unitFrom, unitTo))
     {
-        std::cout << unitFrom->GetName() << " атаковал " << unitTo->GetName() << std::endl;
+        Logger::getInstance().Write(unitFrom->GetName() + " атаковал " + unitTo->GetName() + "\n");
         ExecuteCommand(Command::Ptr(new AttackCommand(unitFrom, heroTo, unitTo)));
         return;
     }
@@ -37,11 +39,13 @@ void Strategy1::MakeStep(Hero &heroFrom, Hero &heroTo)
 
     if (moved)
     {
-        std::cout << unitInfoFrom->GetUnit()->GetName() << " сделал шаг" <<  " на позицию (" << unitInfoFrom->GetPosition().GetX() << ", " << unitInfoFrom->GetPosition().GetY() << ")" << std::endl;
+        std::ostringstream oss;
+        oss << unitInfoFrom->GetUnit()->GetName() << " сделал шаг" <<  " на позицию (" << unitInfoFrom->GetPosition().GetX() << ", " << unitInfoFrom->GetPosition().GetY() << ")" << "\n";
+        Logger::getInstance().Write(oss.str());
     }
     else
     {
-        std::cout << "Армии героя "<< heroFrom.GetName() <<" некого двигать" << std::endl;
+        Logger::getInstance().Write("Армии героя " + heroFrom.GetName() + " некого двигать" + "\n");
     }
 }
 
