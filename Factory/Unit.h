@@ -40,5 +40,5 @@ struct CompositeUnit
 
 struct StandaloneUnit
 {
-    virtual void DecreaseUnitsOfLife(int) = 0;
+    virtual void DecreaseUnitsOfLife(int amount) = 0;
 };

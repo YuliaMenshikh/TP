@@ -66,7 +66,7 @@ add_executable(Factory
         Game.h
         Game.cpp
         Command.h
-        Command.cpp Strategy1.h Strategy1.cpp)
+        Command.cpp Strategy1.h Strategy1.cpp Decorator.h DoubleHealthUnitDecorator.cpp DoubleHealthUnitDecorator.h Decorator.cpp)
 
 add_subdirectory(googletest-master) 
 

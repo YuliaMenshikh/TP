@@ -8,6 +8,7 @@
 #include "ShadowWitch.h"
 #include "ShadowDragon.h"
 #include "Exceptions.h"
+#include "Decorator.h"
 
 #include <memory>
 

@@ -5,6 +5,7 @@
 #include "SimpleStrategy.h"
 #include "Strategy1.h"
 #include "Squad.h"
+#include "DoubleHealthUnitDecorator.h"
 
 void  Game::RunGame()
 {
@@ -24,13 +25,14 @@ Hero::Ptr Game::ConstructYalayaArmy()
 
     Hero::Ptr hero1 = factory1->CreateHero(strategy);
     hero1->AddUnit(squad, Position(1, 1));
-    hero1->AddUnit(factory1->CreateUnit(DungeonFactory::DungeonMinotaur), Position(1, 4));
+    Unit::Ptr decoratedUnit(new DoubleHealthUnitDecorator(factory1->CreateUnit(DungeonFactory::DungeonDarkRaiden)));
+    hero1->AddUnit(decoratedUnit, Position(1, 3));
     return hero1;
 }
 
 Hero::Ptr Game::ConstructDuncanArmy()
 {
-    std::shared_ptr<Strategy> strategy(new SimpleStrategy);
+    std::shared_ptr<Strategy> strategy(new Strategy1);
 
     UnitFactory::Ptr factory2 = std::make_shared<HeavenFactory>();
     Hero::Ptr hero2 = factory2->CreateHero(strategy);
