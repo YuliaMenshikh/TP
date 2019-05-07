@@ -50,3 +50,17 @@ notifications:
       - menshikh.iuk@phystech.edu
     on_success: always # default: change
     on_failure: always # default: always
+
+deploy:
+    provider: releases # выкладываем на GitHub Releases
+
+    api_key:
+        secure: f76818c01693a43885dc39fcd3989bcc24df39a2
+
+    file:
+        # список артефактов
+        - bin/Game
+
+    skip_cleanup: true
+
+  
