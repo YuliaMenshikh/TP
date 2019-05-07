@@ -204,13 +204,14 @@ void Game::ClientCode()
         {
             Unit::Ptr unit = factory->CreateUnit(unitId);
             Power += unit->GetPower();
-            hero->AddUnit(unit, Position(x, y));
             std::cout << "Set positon: ";
-            do {
+            do
+            {
                 std::cin >> x >> y;
                 if (!BattleField::getInstance().IsFreePosition(Position(x, y)))
                     std::cout << "Position is taken.\nSet position: ";
             } while (!BattleField::getInstance().IsFreePosition(Position(x, y)));
+            hero->AddUnit(unit, Position(x, y));
         }
         catch (const InvalidUnitIdException &)
         {
