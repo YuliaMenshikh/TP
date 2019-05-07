@@ -8,6 +8,7 @@
 #include "DoubleHealthUnitDecorator.h"
 #include "BattleField.h"
 #include <random>
+#include <algorithm>
 
 std::string HeroGenerator::RandomString(size_t length)
 {
@@ -21,7 +22,7 @@ std::string HeroGenerator::RandomString(size_t length)
         return charset[ rand() % max_index ];
     };
     std::string str(length,0);
-    std::generate_n( str.begin(), length, randchar );
+    std::generate_n(str.begin(), length, randchar);
     return str;
 }
 
