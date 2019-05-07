@@ -61,5 +61,6 @@ deploy:
         - Game
 
     skip_cleanup: true
-
+    on:
+      branch: Patterns_task_2_3
   
