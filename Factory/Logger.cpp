@@ -4,6 +4,6 @@
 
 Logger& Logger::getInstance()
 {
-    static Logger::Ptr instance(new ConsoleLogger(nullptr));
+    static Logger::Ptr instance(new ConsoleLogger());
     return *instance;
 }

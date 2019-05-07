@@ -6,7 +6,7 @@
 class FileLogger : public Logger
 {
 public:
-    FileLogger(Logger::Ptr logger) : _outfile("game.log", std::ios::out | std::ios::trunc) {}
+    FileLogger() : _outfile("game.log", std::ios::out | std::ios::trunc) {}
     virtual void Write(const std::string &message)
     {
         if (_outfile.is_open())

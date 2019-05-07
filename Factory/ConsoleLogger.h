@@ -5,7 +5,7 @@
 class ConsoleLogger : public Logger
 {
 public:
-    ConsoleLogger(Logger::Ptr logger) {}
+    ConsoleLogger() {}
     virtual void Write(const std::string &message)
     {
         std::cout << message;
