@@ -75,7 +75,7 @@ add_executable(Factory
         UnitDecorator.cpp
         Logger.h
         ConsoleLogger.h
-        Logger.cpp FileLogger.h)
+        Logger.cpp FileLogger.h HeroGenerator.cpp HeroGenerator.h)
 
 add_subdirectory(googletest-master) 
 

@@ -6,18 +6,15 @@
 class FileLogger : public Logger
 {
 public:
-    FileLogger(Logger::Ptr logger)
-    {
-        out.open("output.txt");
-    }
+    FileLogger(Logger::Ptr logger) : _outfile("game.log", std::ios::out | std::ios::trunc) {}
     virtual void Write(const std::string &message)
     {
-        if (out.is_open())
+        if (_outfile.is_open())
         {
-            out << message;
+            _outfile << message;
         }
     }
 
 private:
-    std::ofstream out;
+    std::ofstream _outfile;
 };
