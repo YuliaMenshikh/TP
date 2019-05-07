@@ -118,7 +118,7 @@ void Squad::RemoveDied()
     {
         if (!_unit->IsAlive())
         {
-            Logger::getInstance().Write(_unit->GetName() + " из отряда " + GetName() + " убит\n");
+            Logger::getInstance().Write(_unit->GetName() + " from the squad  " + GetName() + " was killed\n");
             return true;
         }
         return false;

@@ -32,7 +32,7 @@ void HeroBase::RemoveDied()
 
         if (!_unit->IsAlive())
         {
-            Logger::getInstance().Write(_unit->GetName() + " убит\n");
+            Logger::getInstance().Write(_unit->GetName() + " was killed\n");
             return true;
         }
         return false;

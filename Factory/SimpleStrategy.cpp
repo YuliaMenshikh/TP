@@ -14,7 +14,7 @@ void SimpleStrategy::MakeStep(Hero &heroFrom, Hero &heroTo)
 
     if (GetStandaloneUnitToAttack(heroFrom, heroTo, unitFrom, unitTo))
     {
-        Logger::getInstance().Write(unitFrom->GetName() + " атаковал " + unitTo->GetName() + "\n");
+        Logger::getInstance().Write(unitFrom->GetName() + " attacked " + unitTo->GetName() + "\n");
         ExecuteCommand(Command::Ptr(new AttackCommand(unitFrom, heroTo, unitTo)));
         return;
     }
@@ -54,13 +54,13 @@ void SimpleStrategy::MakeStep(Hero &heroFrom, Hero &heroTo)
     if (moved)
     {
         std::ostringstream oss;
-        oss << unitInfoFrom->GetUnit()->GetName() << " сделал шаг по направлению к " << unitInfoTo->GetUnit()->GetName()
-            << " на позицию (" << unitInfoFrom->GetPosition().GetX() << ", " << unitInfoFrom->GetPosition().GetY() << ")" << "\n";
+        oss << unitInfoFrom->GetUnit()->GetName() << " took a step towards the " << unitInfoTo->GetUnit()->GetName()
+            << " to position (" << unitInfoFrom->GetPosition().GetX() << ", " << unitInfoFrom->GetPosition().GetY() << ")" << "\n";
         Logger::getInstance().Write(oss.str());
     }
     else
     {
-        Logger::getInstance().Write("Армии героя " + heroFrom.GetName() + " некого двигать" + "\n");
+        Logger::getInstance().Write(heroFrom.GetName() + "'s army no one to move\n");
     }
 }
 

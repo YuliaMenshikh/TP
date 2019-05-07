@@ -128,7 +128,7 @@ void Game::ClientCode()
     {
         std::cout << std::endl;
         std::cout << "Do you want to create a squad?" << std::endl << "0 - No" << std::endl << "1 - Yes" << std::endl;
-        bool flag;
+        int flag;
         std::cin >> flag;
         if (flag == 0)
             break;
@@ -153,7 +153,8 @@ void Game::ClientCode()
                     try
                     {
                         std::cout << "Set positon: ";
-                        do {
+                        do
+                         {
                             std::cin >> x >> y;
                             if (!BattleField::getInstance().IsFreePosition(Position(x, y)))
                                 std::cout << "Position is taken.\nSetposition:";
@@ -167,7 +168,8 @@ void Game::ClientCode()
                     break;
                 }
 
-                try {
+                try
+                {
                     Unit::Ptr unit = factory->CreateUnit(unitId);
                     Power += unit->GetPower();
                     squad->AddUnit(unit);
@@ -177,6 +179,10 @@ void Game::ClientCode()
                     std::cout << "Invalid Select" << std::endl;
                 }
             }
+        }
+        else
+        {
+            std::cout << "Invalid select\n";
         }
     }
 
@@ -194,17 +200,17 @@ void Game::ClientCode()
         if (unitId == 0)
             break;
 
-        std::cout << "Set positon: ";
-        do {
-            std::cin >> x >> y;
-            if (!BattleField::getInstance().IsFreePosition(Position(x, y)))
-                std::cout << "Position is taken.\nSet position: ";
-        } while (!BattleField::getInstance().IsFreePosition(Position(x, y)));
-
-        try {
+        try
+        {
             Unit::Ptr unit = factory->CreateUnit(unitId);
             Power += unit->GetPower();
             hero->AddUnit(unit, Position(x, y));
+            std::cout << "Set positon: ";
+            do {
+                std::cin >> x >> y;
+                if (!BattleField::getInstance().IsFreePosition(Position(x, y)))
+                    std::cout << "Position is taken.\nSet position: ";
+            } while (!BattleField::getInstance().IsFreePosition(Position(x, y)));
         }
         catch (const InvalidUnitIdException &)
         {
