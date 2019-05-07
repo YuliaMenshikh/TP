@@ -55,8 +55,7 @@ deploy:
     provider: releases # выкладываем на GitHub Releases
 
     api_key:
-        secure: f76818c01693a43885dc39fcd3989bcc24df39a2
-
+      secure: "oHYBJ4qk/wVcXvB468D1elrBg1I6mQnBy6u7q21ADEB4lBhCtsmen4FbYwo/rcqJcPaMQ0hu7dGGofa8mH0p1qQWD76OtFAmYqX5+POzMHZE5330a8xtnmHSsjqUV8tr6mTpybUM15CnZToXPm1WeM0ereegzkPA62U/ZcDeOmQ7T90ru38vliqT39tHKtLZ5IuiaiAm4HDoJcaALgKfBIZl1Pxh8ZI9GXPRizWmBZKts8HN0ong5cSRW21iFMY3qSSTpIzM8rH+jlxO8v4zpUFkhzwQ/WPnggdCg7dCATHLUfaGtK0QwQvvKnhULXYPHejjC3wy9VXzos0DeUmeL4XKgU/uMeOxl3+mvi9sF90KnQQQb6QsyNCC22K0pqEIVMEiR8s/eBEYS1LdkNt3nQZkszlpqVlc0hEP6GP/cNmW4H4lNOBeF4N2DNl9yzj0huevzLQmJauNQSul5sRuvaq78lIHAIL5PWTs4FFR4XKJAxnWu2X6i9Urc5Z3WtL63UH6cv9lu12I85OIjkb4y78VHqHarTqIHiuYEJBLPemL7UKHp/6QJFlAliTJV5vEuSuglX0EJip6GYXKJS1qy+efDbFnu45M/bfkGfOBRVqr/b9DfeqSVs08OgpcTMPkx11MilCvrRiDQeBWs7eWIrtnAMRGhiggQAxhCzTi/e0="
     file:
         # список артефактов
         - Game
