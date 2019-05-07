@@ -55,10 +55,10 @@ deploy:
     provider: releases # выкладываем на GitHub Releases
 
     api_key:
-      secure: f76818c01693a43885dc39fcd3989bcc24df39a2
-   
+      secure: "wcOaxRpfF8R149gWD4oqqo4JXE2KKVOn3dxYbelESZH8lzbtE1ZAGS8q/s3KN85gW15IiD5N8kyXaDaLGIFK2XjpOmidDGdQv8DpDiqfNfVfCeZXNMg+Kkw3AmIXIsQpHm/VgFLveU+v+tscU7+UWF/ls72qSZMkU5IPJjSWg/c9PrI4PzCgcveFUj5zuz7nUwapQTwNFE/iRyAzfk5/OP1aXXP29mME8klv1ohMjOf6tqk/eBo1P80M4dRCvsjM3qnFz5Aq4U6DTJcNg7hEUWx9IChT83/jOpSjjtEeTeVjnoryKhY3ELGXjxKPEykKIeIfUYv7SV5nZCjEJlVyO4L1Ov3Gfn1NmMfLPmGXBfLSHc6ahjd2wNIoEIVSbjyhg/HqjVRDGwlQUaO6VcvPfHgWbcskrgIgzZW7gwKoKIhcDWhFkwLv6y9fcMjEreqxYtcwwL3wUU17WOvbLZ9BDGS8g5w0oRSTY9c++WezR+/hSrDH9ZhHdwq6xLHl3HQc6afDrWY0Vi0Dvx5AUwuhRPeILvB0+lQrZhrtqusPErASxKCX7MZp8inOIDd189HalTeme686JEyR7Qx4OQ+2mR7po8IvvZqP4PM/k196PnKPsyoTVG+hBpsONxvXIm2ejdi7ETWFJS2rwVIzXSJf0b4kXtGdt2eUtk9ojYnldGo="   
+
     file:
-        - bin/Game
+      - bin/Game
 
     skip_cleanup: true
 
