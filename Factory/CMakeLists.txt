@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.12)
-project(Factory)
+project(Game)
 
 set(CMAKE_CXX_STANDARD 14)
 
@@ -7,7 +7,9 @@ include_directories(.)
 include_directories(Dungeon)
 include_directories(Heaven)
 
-add_executable(Factory
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
+
+add_executable(Game
         Dungeon/DungeonFactory.cpp
         Dungeon/DungeonFactory.h
         Heaven/HeavenFactory.cpp
@@ -75,7 +77,10 @@ add_executable(Factory
         UnitDecorator.cpp
         Logger.h
         ConsoleLogger.h
-        Logger.cpp FileLogger.h HeroGenerator.cpp HeroGenerator.h)
+        Logger.cpp
+        FileLogger.h
+        HeroGenerator.cpp
+        HeroGenerator.h)
 
 add_subdirectory(googletest-master) 
 
@@ -84,4 +89,4 @@ include_directories(googletest-master/googlemock/include)
 
 enable_testing()
 
-target_link_libraries(Factory gtest gtest_main)
+target_link_libraries(Game gtest gtest_main)

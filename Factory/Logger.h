@@ -1,7 +1,7 @@
 #pragma once
 
-#include "iostream"
-#include "string"
+#include <string>
+#include <memory>
 
 class Logger
 {
@@ -15,5 +15,5 @@ public:
 
 private:
     Logger(const Logger&);
-    Logger& operator=(Logger&);
+    Logger& operator=(const Logger&);
 };

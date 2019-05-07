@@ -45,14 +45,25 @@ void Run()
 
 int main(int argc, char** argv)
 {
-    /*for (int i = 0; i < argc; ++i)
-    {
-        std::cout << argv[i] << std::endl;
-    }*/
-
     try
     {
-        Run();
+        bool runTest = false;
+        if (argc == 2)
+        {
+            if (!strcmp(argv[1], "-test"))
+            {
+                runTest = true;
+            }
+        }
+
+        if (runTest)
+        {
+            Test();
+        }
+        else
+        {
+            Run();
+        }
     }
     catch (const std::exception &exc)
     {
