@@ -59,7 +59,7 @@ deploy:
 
     file:
         # список артефактов
-        - bin/Game
+        - Game
 
     skip_cleanup: true
 
