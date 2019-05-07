@@ -51,3 +51,16 @@ notifications:
     on_success: always # default: change
     on_failure: always # default: always
   
+deploy:
+    provider: releases # выкладываем на GitHub Releases
+
+    api_key:
+      secure: "k6rWeWzdD7wOODQ3o5jcraXXpDBlF7nO5qSGKca7t6XMdPmI304bw0fWcE3TZqMxUG4/u+rrsPt6E4Ev+uiQz+sVhCxO23wQnBa8Al4la2nkFsMUmNYKP1puC/Oltyvw3a7W9NfuUhD/ijg0RsTo8Lv228n4acBbbsB/xaYdSVz+57a85JtApc+z2mdXVYZ+Y9Tz+VVtf9zEqXyrozmQwLx1m0ZePgFgQaRIpID3ZGxeC56EYvSBFzrupz7DUbRMC26/2riEGyBuC8tdU8pd0liRpqhsMTx5Mly3PbRC0+MsMCqp1pG08y+Zzv4HAfWip9VkuH/yOR0Tg47MUZA8ySgLBYKW7e0kuOVpu0t5CCfSFOJVBukuRzCWkoYrBPSr2clc11+SMavSetcAi8DMroxvLh2pvy9j8p/2CodM8A1Vf5/om7/xv3mKe+sbSstKHpJaDcCouPLIWtspBt7d9fM5oQjOsbA38JVmS6PFOxsLvdimTM62zYockComaBm16AgU+Pau1Za9aoQkjpWMP6d7Flw5g0dTEHPMm5UVQx/XKiFR5EeO1dY9jUflxmfJMvUsj2kTU8PTMjnP5BUfqq8myid0JSMotWAY8Vky9gl6cqgYK7BtCj54hEPDVOvMQXtEjd4TlVGSiVoJBhUJoMBbGZjFJaY81ADeJM9jv+M="
+
+    file:
+      - bin/Game
+
+    skip_cleanup: true
+
+    on:
+      branch: Patterns_task_2_3
