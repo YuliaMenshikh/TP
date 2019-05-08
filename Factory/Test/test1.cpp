@@ -4,8 +4,9 @@
 #include "Heaven/HeavenFactory.h"
 #include "SimpleStrategy.h"
 #include "Squad.h"
+#include "BattleField.h"
 
-TEST(TestGetAvailableUnits, testDungeon)
+TEST(UnitTestGetAvailableUnits, testDungeon)
 {
     UnitFactory::Ptr factory(new DungeonFactory);
     UnitFactory::UnitItems availableUnits;
@@ -21,7 +22,7 @@ TEST(TestGetAvailableUnits, testDungeon)
     }
 }
 
-TEST(TestGetAvailableUnits, testHeaven)
+TEST(UnitTestGetAvailableUnits, testHeaven)
 {
     UnitFactory::Ptr factory(new HeavenFactory);
     UnitFactory::UnitItems availableUnits;
@@ -38,7 +39,7 @@ TEST(TestGetAvailableUnits, testHeaven)
 
 }
 
-TEST(TestGetHero, testDungeon)
+TEST(UnitTestGetHero, testDungeon)
 {
     std::shared_ptr<Strategy> strategy(new SimpleStrategy);
     UnitFactory::Ptr factory(new DungeonFactory);
@@ -46,7 +47,7 @@ TEST(TestGetHero, testDungeon)
     EXPECT_EQ(hero->GetName(), "Ylaya");
 }
 
-TEST(TestGetHero, testHeaven)
+TEST(UnitTestGetHero, testHeaven)
 {
     std::shared_ptr<Strategy> strategy(new SimpleStrategy);
     UnitFactory::Ptr factory(new HeavenFactory);
@@ -54,7 +55,7 @@ TEST(TestGetHero, testHeaven)
     EXPECT_EQ(hero->GetName(), "Duncan");
 }
 
-TEST(TestCreateUnit, testDungeonScout)
+TEST(UnitTestCreateUnit, testDungeonScout)
 {
     UnitFactory::Ptr factory(new DungeonFactory);
     Unit::Ptr DungeonScout = factory->CreateUnit(1);
@@ -69,58 +70,19 @@ TEST(TestCreateUnit, testDungeonScout)
     EXPECT_EQ(DungeonScout->GetMagicPoints(), 0);
 }
 
-TEST(TestGetName, testDungeon)
+TEST(UnitTestGetName, testDungeon)
 {
     UnitFactory::Ptr factory(new DungeonFactory);
     EXPECT_EQ(factory->GetName(), "Dungeon");
 }
 
-TEST(TestGetName, testHeaven)
+TEST(UnitTestGetName, testHeaven)
 {
     UnitFactory::Ptr factory(new HeavenFactory);
     EXPECT_EQ(factory->GetName(), "Heaven");
 }
 
-/*TEST(TestStrategy, MakeStep)
-{
-    std::shared_ptr<Strategy> strategy(new SimpleStrategy);
-
-    UnitFactory::Ptr factory1 = std::make_shared<DungeonFactory>();
-    std::shared_ptr<Squad> squad(new Squad("1 squad"));
-    squad->AddUnit(factory1->CreateUnit(DungeonFactory::DungeonScout));
-    squad->AddUnit(factory1->CreateUnit(DungeonFactory::DungeonDarkRaiden));
-
-    Hero::Ptr hero1 = factory1->CreateHero(strategy);
-    hero1->AddUnit(squad, Position(1, 1));
-    hero1->AddUnit(factory1->CreateUnit(DungeonFactory::DungeonMinotaur), Position(3, 7));
-
-    UnitFactory::Ptr factory2 = std::make_shared<HeavenFactory>();
-    Hero::Ptr hero2 = factory2->CreateHero(strategy);
-    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenPeasant), Position(5, 6));
-    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenFootman), Position(2, 2));
-    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenPriest), Position(5, 1));
-    hero2->AddUnit(factory2->CreateUnit(HeavenFactory::HeavenCavalier), Position(1, 2));
-
-    for (int i = 0; i < 20; ++i)
-    {
-        hero1->MakeStep(*hero2);
-        if (!hero2->HasUnits())
-        {
-            std::cout << "Армия героя " << hero2->GetName() << " уничтожена" << std::endl;
-            break;
-        }
-
-        hero2->MakeStep(*hero1);
-        if (!hero1->HasUnits())
-        {
-            std::cout << "Армия героя " << hero1->GetName() << " уничтожена" << std::endl;
-            break;
-        }
-
-    }
-}*/
-
-TEST(TestStrategy, MoveTo)
+TEST(UnitTestStrategy, MoveTo)
 {
     std::shared_ptr<Strategy> strategy(new SimpleStrategy);
 
@@ -151,7 +113,7 @@ TEST(TestStrategy, MoveTo)
     EXPECT_TRUE(distanceBefore == distanceAfter + 1);
 }
 
-TEST(TestBattleField, BattleField1)
+TEST(UnitTestBattleField, BattleField1)
 {
     std::shared_ptr<Strategy> strategy(new SimpleStrategy);
 
@@ -160,5 +122,8 @@ TEST(TestBattleField, BattleField1)
     Position position2(6, 7);
     factory->CreateHero(strategy)->AddUnit(factory->CreateUnit(DungeonFactory::DungeonHydra), position1);
     factory->CreateHero(strategy)->AddUnit(factory->CreateUnit(DungeonFactory::DungeonBloodMaiden), position2);
+    EXPECT_FALSE(!BattleField::getInstance().IsFreePosition(position1));
+    EXPECT_FALSE(!BattleField::getInstance().IsFreePosition(position2));
 }
+
 

@@ -80,7 +80,7 @@ add_executable(Game
         Logger.cpp
         FileLogger.h
         HeroGenerator.cpp
-        HeroGenerator.h)
+        HeroGenerator.h Test/test2.cpp)
 
 add_subdirectory(googletest-master) 
 
