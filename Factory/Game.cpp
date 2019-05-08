@@ -152,12 +152,12 @@ void Game::ClientCode()
                 {
                     try
                     {
-                        std::cout << "Set positon: ";
+                        std::cout << "Set positon (coordinate x y): ";
                         do
                          {
                             std::cin >> x >> y;
                             if (!BattleField::getInstance().IsFreePosition(Position(x, y)))
-                                std::cout << "Position is taken.\nSetposition:";
+                                std::cout << "Position is taken.\nSetposition (coordinate x y):";
                         } while (!BattleField::getInstance().IsFreePosition(Position(x, y)));
                         hero->AddUnit(squad, Position(x, y));
                     }
@@ -204,12 +204,12 @@ void Game::ClientCode()
         {
             Unit::Ptr unit = factory->CreateUnit(unitId);
             Power += unit->GetPower();
-            std::cout << "Set positon: ";
+            std::cout << "Set positon (coordinate x y): ";
             do
             {
                 std::cin >> x >> y;
                 if (!BattleField::getInstance().IsFreePosition(Position(x, y)))
-                    std::cout << "Position is taken.\nSet position: ";
+                    std::cout << "Position is taken.\nSet position (coordinate x y): ";
             } while (!BattleField::getInstance().IsFreePosition(Position(x, y)));
             hero->AddUnit(unit, Position(x, y));
         }
@@ -231,7 +231,7 @@ void Game::ClientCode()
     else
         factoryRival = std::make_shared<HeavenFactory>();
 
-    hero2 = HeroGenerator::GenerateArmyWithPower(factory, Power);
+    hero2 = HeroGenerator::GenerateArmyWithPower(factoryRival, Power);
 
     Logger::getInstance().Write("\nRival army:\n");
     Game::DumpArmy(factoryRival, hero2);
