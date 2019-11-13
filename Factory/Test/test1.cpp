@@ -113,6 +113,16 @@ TEST(UnitTestStrategy, MoveTo)
     EXPECT_TRUE(distanceBefore == distanceAfter + 1);
 }
 
+TEST(UnitTestCommand, AttackCommand)
+{
+    std::shared_ptr<Strategy> strategy(new SimpleStrategy);
+    UnitFactory::Ptr factory = std::make_shared<DungeonFactory>();
+    Unit::Ptr unit1 = factory->CreateUnit(DungeonFactory::DungeonHydra);
+    Unit::Ptr unit2 = factory->CreateUnit(DungeonFactory::DungeonScout);
+    Hero::Ptr hero2 = factory->CreateHero(strategy);
+    //ExecuteCommand(Command::Ptr(new AttackCommand(unit1, &hero2, unit2)));
+}
+
 TEST(UnitTestBattleField, BattleField1)
 {
     std::shared_ptr<Strategy> strategy(new SimpleStrategy);

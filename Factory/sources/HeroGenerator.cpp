@@ -10,7 +10,7 @@
 #include <random>
 #include <algorithm>
 
-std::string HeroGenerator::RandomString(size_t length)
+void HeroGenerator::RandomString(std::string& name, size_t length)
 {
     auto randchar = []() -> char
     {
@@ -21,9 +21,8 @@ std::string HeroGenerator::RandomString(size_t length)
         const size_t max_index = (sizeof(charset) - 1);
         return charset[ rand() % max_index ];
     };
-    std::string str(length,0);
-    std::generate_n(str.begin(), length, randchar);
-    return str;
+    name.assign(length, 0);
+    std::generate_n(name.begin(), length, randchar);
 }
 
 Hero::Ptr HeroGenerator::GenerateArmyWithPower(UnitFactory::Ptr factory, int power)
@@ -55,7 +54,8 @@ Hero::Ptr HeroGenerator::GenerateArmyWithPower(UnitFactory::Ptr factory, int pow
         int SquadGenerator = distributionCreateSquad(generator);
         if (SquadGenerator > 6)
         {
-            std::string SquadName = RandomString(7);
+            std::string SquadName;
+            RandomString(SquadName, 7);
             std::shared_ptr<Squad> squad(new Squad(SquadName));
             std::uniform_int_distribution<int> distributionNumberOfUnits(1, unitCollection->size());
             int NumberOfUnits = distributionNumberOfUnits(generator);
